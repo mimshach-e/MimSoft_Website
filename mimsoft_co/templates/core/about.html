@@ -1,0 +1,397 @@
+{% extends 'base.html' %}
+
+{% block title %}About Us - {{ company_name|default:"MimSoft Corporation" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h6 class="text-warning fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">About MimSoft</h6>
+                <h1 class="display-3 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Our Story of Innovation</h1>
+                <p class="lead mb-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Discover the journey that shaped us into a leading software development company</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company Story Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="position-relative">
+                    <div class="bg-primary bg-opacity-10 rounded-4 p-5">
+                        <h3 class="fw-bold mb-4">Our Journey</h3>
+                        <p class="text-muted mb-4">Founded with a vision to bridge the gap between business needs and technological innovation, MimSoft Corporation has grown from a small startup to a trusted partner for businesses worldwide.</p>
+                        <p class="text-muted mb-0">We believe that technology should be accessible, intuitive, and transformative. Every project we undertake is an opportunity to push boundaries and create solutions that make a real difference.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h6 class="text-primary fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">Our Story</h6>
+                <h2 class="display-6 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Building the Future, One Project at a Time</h2>
+                <p class="lead text-muted mb-4" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Our story began with a simple belief: that great software can transform businesses and improve lives.</p>
+                <p class="text-muted mb-4">Over the years, we've evolved from a small development team to a comprehensive software solutions provider, serving clients across various industries and helping them navigate the digital transformation journey.</p>
+                <div class="row g-4">
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-rocket text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Innovation First</h6>
+                                <p class="text-muted small mb-0">Always exploring new technologies</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-users text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Client Focused</h6>
+                                <p class="text-muted small mb-0">Your success is our priority</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-primary fw-bold text-uppercase mb-3">Our Values</h6>
+                <h2 class="display-5 fw-bold mb-4">The Principles That Guide Us</h2>
+                <p class="lead text-muted">Core values that shape our culture and drive our success</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                                <i class="fas fa-lightbulb fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">Innovation</h5>
+                        <p class="card-text text-muted">We constantly explore new technologies and approaches to deliver cutting-edge solutions that keep our clients ahead of the curve.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                                <i class="fas fa-shield-alt fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">Quality</h5>
+                        <p class="card-text text-muted">We maintain the highest standards in every project, ensuring robust, scalable, and maintainable code that exceeds expectations.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                                <i class="fas fa-handshake fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">Partnership</h5>
+                        <p class="card-text text-muted">We build long-term relationships with our clients, working as an extension of their team to achieve shared goals.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                                <i class="fas fa-clock fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">Reliability</h5>
+                        <p class="card-text text-muted">We deliver projects on time and within budget, providing consistent support and maintenance throughout the project lifecycle.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                                <i class="fas fa-globe fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">Global Perspective</h5>
+                        <p class="card-text text-muted">We bring diverse perspectives and international best practices to every project, ensuring solutions that work globally.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                                <i class="fas fa-heart fa-2x text-primary"></i>
+                            </div>
+                        </div>
+                        <h5 class="card-title fw-bold mb-3">Passion</h5>
+                        <p class="card-text text-muted">We're passionate about technology and its power to transform businesses, driving us to deliver exceptional results every time.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Stack Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-primary fw-bold text-uppercase mb-3">Technology Stack</h6>
+                <h2 class="display-5 fw-bold mb-4">Cutting-Edge Technologies</h2>
+                <p class="lead text-muted">We leverage the latest technologies to build robust, scalable, and future-proof solutions</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fab fa-python fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">Python</h6>
+                    <p class="text-muted small">Backend development, data science, automation</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fab fa-js-square fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">JavaScript</h6>
+                    <p class="text-muted small">Frontend development, Node.js, React</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fab fa-java fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">Java</h6>
+                    <p class="text-muted small">Enterprise applications, Android development</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fab fa-aws fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">Cloud</h6>
+                    <p class="text-muted small">AWS, Azure, Google Cloud Platform</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-database fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">Databases</h6>
+                    <p class="text-muted small">PostgreSQL, MongoDB, Redis, MySQL</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fab fa-docker fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">DevOps</h6>
+                    <p class="text-muted small">Docker, Kubernetes, CI/CD pipelines</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-mobile-alt fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">Mobile</h6>
+                    <p class="text-muted small">React Native, Flutter, native iOS/Android</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-3">
+                        <i class="fas fa-robot fa-3x text-primary"></i>
+                    </div>
+                    <h6 class="fw-bold">AI/ML</h6>
+                    <p class="text-muted small">Machine learning, data analytics, automation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Process Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-primary fw-bold text-uppercase mb-3">Our Process</h6>
+                <h2 class="display-5 fw-bold mb-4">How We Deliver Success</h2>
+                <p class="lead text-muted">A proven methodology that ensures quality, transparency, and successful project delivery</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="position-relative mb-4">
+                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                            <span class="text-white fw-bold fs-4">1</span>
+                        </div>
+                        <div class="position-absolute top-50 start-100 translate-middle d-none d-lg-block">
+                            <div class="bg-primary" style="width: 60px; height: 2px;"></div>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Discovery</h5>
+                    <p class="text-muted">We analyze your requirements, understand your business goals, and create a comprehensive project roadmap.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="position-relative mb-4">
+                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                            <span class="text-white fw-bold fs-4">2</span>
+                        </div>
+                        <div class="position-absolute top-50 start-100 translate-middle d-none d-lg-block">
+                            <div class="bg-primary" style="width: 60px; height: 2px;"></div>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Planning</h5>
+                    <p class="text-muted">Detailed project planning, architecture design, and technology stack selection based on your specific needs.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="position-relative mb-4">
+                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                            <span class="text-white fw-bold fs-4">3</span>
+                        </div>
+                        <div class="position-absolute top-50 start-100 translate-middle d-none d-lg-block">
+                            <div class="bg-primary" style="width: 60px; height: 2px;"></div>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Development</h5>
+                    <p class="text-muted">Agile development with regular updates, testing, and quality assurance throughout the development cycle.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center">
+                    <div class="position-relative mb-4">
+                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px;">
+                            <span class="text-white fw-bold fs-4">4</span>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Deployment</h5>
+                    <p class="text-muted">Smooth deployment, user training, and ongoing support to ensure your solution runs perfectly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-primary fw-bold text-uppercase mb-3">Our Team</h6>
+                <h2 class="display-5 fw-bold mb-4">Meet the Experts</h2>
+                <p class="lead text-muted">Talented professionals dedicated to delivering exceptional results</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for member in team_members|slice:":6" %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card text-center border-0 shadow-sm h-100">
+                    {% if member.photo %}
+                    <div class="position-relative overflow-hidden">
+                        <img src="{{ member.photo.url }}" class="card-img-top" alt="{{ member.name }}" style="height: 280px; object-fit: cover;">
+                        <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
+                            <div class="d-flex justify-content-center gap-2">
+                                {% if member.linkedin_url %}
+                                <a href="{{ member.linkedin_url }}" class="btn btn-sm btn-primary rounded-circle" target="_blank">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-1">{{ member.name }}</h5>
+                        <p class="text-primary fw-semibold mb-2">{{ member.role }}</p>
+                        <p class="card-text text-muted small">{{ member.bio|truncatewords:20 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="p-5">
+                    <i class="fas fa-users fa-3x text-muted mb-3"></i>
+                    <h4>Team Coming Soon</h4>
+                    <p class="text-muted">We're assembling our amazing team. Check back soon!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'team:team_list' %}" class="btn btn-outline-primary btn-lg">
+                Meet Our Full Team <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold text-white mb-4">Ready to Work With Us?</h2>
+                <p class="lead text-white-50 mb-5">Let's discuss your project and see how we can help bring your vision to life.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning btn-lg px-5 py-3">
+                        <i class="fas fa-paper-plane me-2"></i>Start Your Project
+                    </a>
+                    <a href="{% url 'projects:project_list' %}" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-eye me-2"></i>View Our Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

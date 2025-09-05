@@ -1,0 +1,321 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Contact Us - {{ company_name|default:"MimSoft Corporation" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h6 class="text-warning fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">Contact Us</h6>
+                <h1 class="display-3 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Let's Start Your Project</h1>
+                <p class="lead mb-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Ready to transform your business with innovative technology solutions? Get in touch with us today.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Form Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-5">
+                        <h3 class="fw-bold mb-4">Send Us a Message</h3>
+                        
+                        {% if form.errors %}
+                        <div class="alert alert-danger mb-4">
+                            <h6 class="fw-bold mb-2">Please correct the following errors:</h6>
+                            {% if form.non_field_errors %}
+                            <ul class="mb-0">
+                                {% for error in form.non_field_errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        
+                        <form method="post" class="needs-validation" novalidate>
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="{{ form.name.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.name.label }} <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.name.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.email.label }} <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.email.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="{{ form.company.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.company.label }}
+                                    </label>
+                                    {{ form.company }}
+                                    {% if form.company.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.company.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.phone.label }}
+                                    </label>
+                                    {{ form.phone }}
+                                    {% if form.phone.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.phone.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label for="{{ form.project_interest.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.project_interest.label }}
+                                    </label>
+                                    {{ form.project_interest }}
+                                    {% if form.project_interest.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.project_interest.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label for="{{ form.message.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.message.label }} <span class="text-danger">*</span>
+                                    </label>
+                                    {{ form.message }}
+                                    {% if form.message.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.message.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        {{ form.consent_to_store }}
+                                        <label class="form-check-label" for="{{ form.consent_to_store.id_for_label }}">
+                                            {{ form.consent_to_store.label }}
+                                        </label>
+                                        {% if form.consent_to_store.errors %}
+                                        <div class="invalid-feedback d-block">
+                                            {% for error in form.consent_to_store.errors %}
+                                            {{ error }}
+                                            {% endfor %}
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <label for="{{ form.captcha.id_for_label }}" class="form-label fw-semibold">
+                                        {{ form.captcha.label }}
+                                    </label>
+                                    {{ form.captcha|as_crispy_field }}
+                                    {% if form.captcha.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {% for error in form.captcha.errors %}
+                                        {{ error }}
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                    <small class="form-text text-muted">{{ form.captcha.help_text }}</small>
+                                </div>
+                                
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5 py-3">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-4">
+                            <i class="fas fa-info-circle text-primary me-2"></i>Get in Touch
+                        </h5>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-envelope text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Email</h6>
+                                    <p class="text-muted mb-0">info@mimsoft.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-phone text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Phone</h6>
+                                    <p class="text-muted mb-0">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-start mb-3">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-map-marker-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Address</h6>
+                                    <p class="text-muted mb-0">123 Tech Street<br>Digital City, DC 12345</p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                        <i class="fas fa-clock text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1">Business Hours</h6>
+                                    <p class="text-muted mb-0">Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 2:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h6 class="fw-bold mb-3">Follow Us</h6>
+                        <div class="d-flex gap-2">
+                            <a href="#" class="btn btn-outline-primary rounded-circle" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary rounded-circle" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary rounded-circle" title="Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="btn btn-outline-primary rounded-circle" title="Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-primary fw-bold text-uppercase mb-3">Why Choose MimSoft</h6>
+                <h2 class="display-5 fw-bold mb-4">Your Trusted Technology Partner</h2>
+                <p class="lead text-muted">We've helped hundreds of businesses transform their digital presence and achieve remarkable growth</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                            <i class="fas fa-rocket fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Fast Response</h5>
+                    <p class="text-muted">We respond to all inquiries within 24 hours, ensuring you get the information you need quickly.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                            <i class="fas fa-users fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Expert Consultation</h5>
+                    <p class="text-muted">Get expert advice from our experienced team to understand the best approach for your project.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                            <i class="fas fa-shield-alt fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Secure Communication</h5>
+                    <p class="text-muted">Your information is protected with industry-standard security measures and strict privacy policies.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold text-white mb-4">Ready to Get Started?</h2>
+                <p class="lead text-white-50 mb-5">Let's discuss your project and see how we can help transform your business with innovative technology solutions.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'projects:project_list' %}" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-eye me-2"></i>View Our Work
+                    </a>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-cogs me-2"></i>Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

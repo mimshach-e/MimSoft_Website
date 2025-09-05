@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block title %}Our Portfolio - {{ company_name|default:"MimSoft Corporation" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h6 class="text-warning fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">Our Portfolio</h6>
+                <h1 class="display-3 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Projects That Inspire</h1>
+                <p class="lead mb-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Discover how we've helped businesses transform their digital presence and achieve remarkable growth</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Filters Section -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-3">Filter Projects</h5>
+                        <form method="get" class="row g-3">
+                            <div class="col-md-4">
+                                <label for="category" class="form-label fw-semibold">Category</label>
+                                <select name="category" id="category" class="form-select">
+                                    <option value="">All Categories</option>
+                                    {% for category_code, category_name in categories %}
+                                    <option value="{{ category_code }}" {% if request.GET.category == category_code %}selected{% endif %}>
+                                        {{ category_name }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="service" class="form-label fw-semibold">Service</label>
+                                <select name="service" id="service" class="form-select">
+                                    <option value="">All Services</option>
+                                    {% for service in services %}
+                                    <option value="{{ service.id }}" {% if request.GET.service == service.id|stringformat:"s" %}selected{% endif %}>
+                                        {{ service.name }}
+                                    </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="col-md-4 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary me-2">
+                                    <i class="fas fa-filter me-2"></i>Filter
+                                </button>
+                                <a href="{% url 'projects:project_list' %}" class="btn btn-outline-secondary">
+                                    <i class="fas fa-times me-2"></i>Clear
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Projects Grid -->
+<section class="section-padding">
+    <div class="container">
+        {% if projects %}
+        <div class="row g-4">
+            {% for project in projects %}
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    {% if project.image %}
+                    <div class="position-relative overflow-hidden">
+                        <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 250px; object-fit: cover;">
+                        <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0" style="transition: opacity 0.3s ease;">
+                            <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-light">
+                                <i class="fas fa-eye me-2"></i>View Project
+                            </a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-3">{{ project.title }}</h5>
+                        <p class="card-text text-muted mb-3">{{ project.description|truncatewords:20 }}</p>
+                        
+                        <!-- Client Logo and Name Section -->
+                        <div class="mb-3">
+                            <div class="d-flex align-items-center justify-content-center">
+                                {% if project.client_logo %}
+                                <img src="{{ project.client_logo.url }}" alt="{{ project.client_name }} Logo" class="client-logo me-2" style="height: 30px; width: auto; max-width: 80px; object-fit: contain;">
+                                {% endif %}
+                                <small class="text-muted fw-bold">{{ project.client_name }}</small>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <span class="badge bg-primary me-2">{{ project.get_category_display }}</span>
+                            <small class="text-muted">{{ project.date_delivered|date:"M Y" }}</small>
+                        </div>
+                        
+                        {% if project.service_provided.all %}
+                        <div class="mb-3">
+                            <small class="text-muted fw-semibold d-block mb-2">Services:</small>
+                            <div class="d-flex flex-wrap gap-1">
+                                {% for service in project.service_provided.all %}
+                                <span class="badge bg-secondary">{{ service.name }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-outline-primary btn-sm">
+                                View Details <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center">
+            <div class="p-5">
+                <i class="fas fa-search fa-4x text-muted mb-3"></i>
+                <h3>No projects found</h3>
+                <p class="text-muted">Try adjusting your filters or browse all projects.</p>
+                <a href="{% url 'projects:project_list' %}" class="btn btn-primary">
+                    <i class="fas fa-eye me-2"></i>View All Projects
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold text-white mb-4">Ready to Start Your Project?</h2>
+                <p class="lead text-white-50 mb-5">Let's discuss how we can help bring your vision to life and transform your business with innovative technology solutions.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning btn-lg px-5 py-3">
+                        <i class="fas fa-paper-plane me-2"></i>Get Started Today
+                    </a>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-cogs me-2"></i>Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+

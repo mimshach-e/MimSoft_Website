@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Contact Form</title>
+</head>
+<body>
+    <h1>Debug Contact Form</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        
+        <h2>Form Fields Debug:</h2>
+        <ul>
+        {% for field_name, field in form.fields.items %}
+            <li><strong>{{ field_name }}</strong>: {{ field }}</li>
+        {% endfor %}
+        </ul>
+        
+        <h2>Form Errors:</h2>
+        {% if form.errors %}
+            <ul>
+            {% for field, errors in form.errors.items %}
+                {% for error in errors %}
+                    <li>{{ field }}: {{ error }}</li>
+                {% endfor %}
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No form errors</p>
+        {% endif %}
+        
+        <h2>Form Non-Field Errors:</h2>
+        {% if form.non_field_errors %}
+            <ul>
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+        {% else %}
+            <p>No non-field errors</p>
+        {% endif %}
+        
+        <h2>Render Form:</h2>
+        {{ form.as_p }}
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+
+{% block title %}Client Testimonials - {{ company_name|default:"MimSoft Corporation" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h6 class="text-warning fw-bold text-uppercase mb-3">Client Testimonials</h6>
+                <h1 class="display-3 fw-bold mb-4">What Our Clients Say</h1>
+                <p class="lead mb-5">Real feedback from businesses we've helped transform with innovative technology solutions</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Grid -->
+<section class="section-padding">
+    <div class="container">
+        {% if testimonials %}
+        <div class="row g-4">
+            {% for testimonial in testimonials %}
+            <div class="col-lg-6 col-md-6">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body p-4">
+                        <div class="mb-3">
+                            <div class="d-flex">
+                                {% for i in "12345" %}
+                                <i class="fas fa-star text-warning me-1"></i>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <blockquote class="mb-4">
+                            <p class="fst-italic text-muted fs-5">"{{ testimonial.content }}"</p>
+                        </blockquote>
+                        <div class="d-flex align-items-center">
+                            {% if testimonial.avatar %}
+                            <img src="{{ testimonial.avatar.url }}" alt="{{ testimonial.client_name }}" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                            {% else %}
+                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                                <i class="fas fa-user fa-2x text-white"></i>
+                            </div>
+                            {% endif %}
+                            <div class="flex-grow-1">
+                                <h6 class="fw-bold mb-1">{{ testimonial.client_name }}</h6>
+                                <p class="text-muted mb-1">{{ testimonial.role }} at {{ testimonial.company }}</p>
+                                {% if testimonial.project %}
+                                <small class="text-primary">
+                                    <a href="{% url 'projects:project_detail' testimonial.project.pk %}" class="text-decoration-none">
+                                        <i class="fas fa-link me-1"></i>View Project
+                                    </a>
+                                </small>
+                                {% endif %}
+                            </div>
+                            {% if testimonial.is_featured %}
+                            <span class="badge bg-warning text-dark">
+                                <i class="fas fa-star me-1"></i>Featured
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if is_paginated %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <nav aria-label="Testimonials pagination">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                        {% endif %}
+                        
+                        {% for num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == num %}
+                        <li class="page-item active">
+                            <span class="page-link">{{ num }}</span>
+                        </li>
+                        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        
+                        {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        {% endif %}
+        
+        {% else %}
+        <div class="text-center">
+            <div class="p-5">
+                <i class="fas fa-comments fa-3x text-muted mb-3"></i>
+                <h4>Testimonials Coming Soon</h4>
+                <p class="text-muted">We're building our reputation. Check back soon!</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Why Clients Choose Us -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-primary fw-bold text-uppercase mb-3">Why Choose MimSoft</h6>
+                <h2 class="display-5 fw-bold mb-4">Trusted by Businesses Worldwide</h2>
+                <p class="lead text-muted">We've earned the trust of our clients through consistent delivery of high-quality solutions</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                            <i class="fas fa-rocket fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Fast Delivery</h5>
+                    <p class="text-muted">We deliver projects on time and within budget, ensuring your business doesn't miss opportunities.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                            <i class="fas fa-shield-alt fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Quality Assurance</h5>
+                    <p class="text-muted">Rigorous testing and quality standards ensure your solution works flawlessly from day one.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="text-center p-4">
+                    <div class="mb-4">
+                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
+                            <i class="fas fa-headset fa-2x text-primary"></i>
+                        </div>
+                    </div>
+                    <h5 class="fw-bold mb-3">Ongoing Support</h5>
+                    <p class="text-muted">We provide continuous support and maintenance to ensure your solution evolves with your business.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold text-white mb-4">Ready to Join Our Success Stories?</h2>
+                <p class="lead text-white-50 mb-5">Let's discuss your project and see how we can help transform your business with innovative technology solutions.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning btn-lg px-5 py-3">
+                        <i class="fas fa-paper-plane me-2"></i>Start Your Project
+                    </a>
+                    <a href="{% url 'projects:project_list' %}" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-eye me-2"></i>View Our Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+

@@ -1,0 +1,617 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ company_name|default:"MimSoft Corporation" }} - {{ company_tagline|default:"Innovative Software Solutions" }}{% endblock %}
+
+{% block content %}
+<!-- MimSoft Hero Section with Company Image -->
+<section class="hero-section" style="background: linear-gradient(rgba(22, 0, 115, 0.7), rgba(22, 0, 115, 0.5)), url('/media/home/hame_hero_page_1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 35vh; display: flex; align-items: center; position: relative; overflow: hidden; border-radius: 40px; margin: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="hero-content">
+                    <!-- Trust Badge -->
+                    <div class="trust-badge mb-4">
+                        <span class="badge bg-white text-primary px-4 py-2 rounded-pill" style="font-family: 'Work Sans', sans-serif; font-weight: 600; font-size: 0.9rem; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                            <i class="fas fa-shield-alt me-2"></i>Trusted by 500+ Companies
+                        </span>
+                    </div>
+                    
+                    <!-- Main Heading -->
+                    <h1 class="display-3 fw-light mb-4 text-white" style="font-family: 'Poppins', sans-serif; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.3); font-weight: 300;">
+                        Transforming Ideas Into
+                        <span class="text-warning" style="background: linear-gradient(45deg, #f97316, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; font-weight: 400;">Digital Reality</span>
+                    </h1>
+                    
+                    <!-- Subheading -->
+                    <p class="lead mb-5 text-white" style="font-family: 'Work Sans', sans-serif; font-size: 1.3rem; line-height: 1.6; max-width: 700px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                        {{ company_mission|default:"We deliver cutting-edge software solutions that drive business growth and digital transformation. From web applications to mobile solutions, we turn your vision into powerful, scalable technology." }}
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="hero-buttons d-flex flex-wrap justify-content-center gap-3 mb-4">
+                        <a href="{% url 'contact:contact' %}" class="btn btn-warning px-4 py-2" style="font-family: 'Work Sans', sans-serif; font-weight: 500; border-radius: 20px; font-size: 0.9rem; box-shadow: 0 4px 15px rgba(249, 115, 22, 0.3); transition: all 0.3s ease; min-width: 140px;">
+                            <i class="fas fa-rocket me-2"></i>Start Project
+                        </a>
+                        <a href="{% url 'projects:project_list' %}" class="btn px-4 py-2" style="font-family: 'Work Sans', sans-serif; font-weight: 500; border-radius: 20px; font-size: 0.9rem; background: #160073; border: 2px solid #160073; color: white; transition: all 0.3s ease; min-width: 140px;">
+                            <i class="fas fa-play me-2"></i>View Work
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events: none; overflow: hidden;">
+        <div class="position-absolute" style="top: 15%; left: 8%; width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 8s ease-in-out infinite; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);"></div>
+        <div class="position-absolute" style="top: 70%; right: 12%; width: 60px; height: 60px; background: rgba(249,115,22,0.2); border-radius: 50%; animation: float 10s ease-in-out infinite reverse; backdrop-filter: blur(10px); border: 1px solid rgba(249,115,22,0.3);"></div>
+        <div class="position-absolute" style="top: 85%; left: 15%; width: 100px; height: 100px; background: rgba(37,99,235,0.2); border-radius: 50%; animation: float 12s ease-in-out infinite; backdrop-filter: blur(10px); border: 1px solid rgba(37,99,235,0.3);"></div>
+        <div class="position-absolute" style="top: 30%; right: 25%; width: 40px; height: 40px; background: rgba(6,182,212,0.3); border-radius: 50%; animation: float 6s ease-in-out infinite; backdrop-filter: blur(10px); border: 1px solid rgba(6,182,212,0.4);"></div>
+    </div>
+</section>
+
+<!-- Finovate Theme Services Section -->
+<section class="section-padding" style="background: var(--bg-white); position: relative; overflow: hidden;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; color: #160073;">Our Services</h6>
+                <h2 class="display-4 fw-light mb-4 text-dark" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Solutions That Drive Success</h2>
+                <p class="lead text-muted fs-5" style="font-family: 'Work Sans', sans-serif; font-weight: 400;">Comprehensive software development services tailored to your business needs</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for service in services|slice:":4" %}
+            <div class="col-lg-3 col-md-4 col-sm-6">
+                <div class="card border-0 service-card" style="background: var(--bg-white); border-radius: 20px; box-shadow: 0 8px 30px rgba(22, 0, 115, 0.1); transition: all 0.3s ease; overflow: hidden; height: 450px; position: relative; border: 2px solid transparent;">
+                    <!-- Service Media with Icon -->
+                    <div class="position-relative" style="height: 300px; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); overflow: hidden;">
+                        <!-- Service Icon in top-left corner -->
+                        <div class="position-absolute top-0 start-0 m-3" style="z-index: 3;">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; background: #160073; box-shadow: 0 4px 15px rgba(22, 0, 115, 0.3);">
+                                {% if service.name == "Website Development" %}
+                                    <i class="fas fa-code fa-lg text-white"></i>
+                                {% elif service.name == "Mobile App Development" %}
+                                    <i class="fas fa-mobile-alt fa-lg text-white"></i>
+                                {% elif service.name == "E-commerce Solutions" %}
+                                    <i class="fas fa-shopping-cart fa-lg text-white"></i>
+                                {% elif service.name == "Social Media Management" %}
+                                    <i class="fas fa-share-alt fa-lg text-white"></i>
+                                {% elif service.name == "UI/UX Design" %}
+                                    <i class="fas fa-paint-brush fa-lg text-white"></i>
+                                {% elif service.name == "Support & Maintenance" %}
+                                    <i class="fas fa-tools fa-lg text-white"></i>
+                                {% elif service.name == "Graphic Design" %}
+                                    <i class="fas fa-palette fa-lg text-white"></i>
+                                {% elif service.name == "Video Editing" %}
+                                    <i class="fas fa-video fa-lg text-white"></i>
+                                {% else %}
+                                    <i class="fas fa-cogs fa-lg text-white"></i>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        <!-- Service Image or Video -->
+                        {% if service.media_type == 'video' and service.video %}
+                            <video class="w-100 h-100" style="object-fit: cover;" autoplay muted loop>
+                                <source src="{{ service.video.url }}" type="video/mp4">
+                                <source src="{{ service.video.url }}" type="video/webm">
+                                Your browser does not support the video tag.
+                            </video>
+                        {% elif service.media_type == 'image' and service.image %}
+                            <img src="{{ service.image.url }}" alt="{{ service.name }}" class="w-100 h-100" style="object-fit: cover;">
+                        {% else %}
+                            <!-- Placeholder when no media is available -->
+                            <div class="w-100 h-100 d-flex align-items-center justify-content-center">
+                                <div class="text-center">
+                                    <i class="fas fa-image fa-3x text-muted mb-2" style="opacity: 0.3;"></i>
+                                    <p class="text-muted small mb-0" style="font-family: 'Work Sans', sans-serif;">Service Media</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                        
+                        <!-- Media Type Indicator -->
+                        {% if service.media_type == 'video' and service.video %}
+                            <div class="position-absolute bottom-0 end-0 m-3" style="z-index: 3;">
+                                <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 30px; height: 30px; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);">
+                                    <i class="fas fa-play fa-sm text-white"></i>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Card Content -->
+                    <div class="card-body p-3 text-center d-flex flex-column justify-content-between service-card-content" style="height: 150px; transition: all 0.3s ease;">
+                                                       <div>
+                                   <h5 class="card-title mb-2" style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 500; color: #f65d00;">{{ service.name }}</h5>
+                                   <p class="card-text text-muted mb-2" style="font-size: 0.8rem; line-height: 1.3; font-family: 'Work Sans', sans-serif;">{{ service.description|truncatewords:8 }}</p>
+                               </div>
+                        <div>
+                            <a href="{% url 'services:service_detail' service.pk %}" class="btn btn-primary btn-sm" style="border-radius: 12px; padding: 0.3rem 1rem; font-weight: 500; font-size: 0.75rem; font-family: 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; background: #160073; border: none;">
+                                Learn More <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="p-4">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background: var(--gradient-primary); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);">
+                        <i class="fas fa-cogs fa-2x text-white"></i>
+                    </div>
+                    <h5 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600;">Services Coming Soon</h5>
+                    <p class="text-muted">We're preparing our service offerings. Check back soon!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'services:service_list' %}" class="btn btn-outline-primary" style="border: 2px solid #160073; color: #160073; border-radius: 25px; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 300; font-family: 'Work Sans', sans-serif;">
+                View All Services <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="position-relative">
+                    <div class="bg-primary bg-opacity-10 rounded-4 p-5">
+                        <h3 class="fw-bold mb-4">Why Choose MimSoft?</h3>
+                        <div class="row g-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0 me-3">
+                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-2">Expert Team</h6>
+                                        <p class="text-muted small mb-0">Skilled developers with years of experience</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0 me-3">
+                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-2">Quality Assurance</h6>
+                                        <p class="text-muted small mb-0">Rigorous testing and quality standards</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0 me-3">
+                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-2">Timely Delivery</h6>
+                                        <p class="text-muted small mb-0">Projects delivered on schedule</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex align-items-start">
+                                    <div class="flex-shrink-0 me-3">
+                                        <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="fw-bold mb-2">Ongoing Support</h6>
+                                        <p class="text-muted small mb-0">Continuous maintenance and updates</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h6 class="fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; color: #160073;">About Us</h6>
+                <h2 class="display-6 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300; color: #160073;">{{ company_name|default:"MimSoft Corporation" }}</h2>
+                <p class="lead mb-4" style="font-family: 'Work Sans', sans-serif; font-weight: 500; color: #6b7280;">{{ company_mission|default:"We are a team of passionate developers, designers, and strategists dedicated to creating innovative software solutions that help businesses thrive in the digital age." }}</p>
+                <p class="mb-4" style="font-family: 'Work Sans', sans-serif; font-weight: 400; color: #6b7280; line-height: 1.6;">With years of experience in software development, we understand the challenges businesses face in today's competitive landscape. Our solutions are designed to be scalable, secure, and user-friendly.</p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{% url 'core:about' %}" class="btn btn-outline-primary" style="border-color: #160073; color: #160073; font-family: 'Work Sans', sans-serif; font-weight: 500; border-radius: 8px; padding: 0.75rem 1.5rem; transition: all 0.3s ease;">
+                        Learn More <i class="fas fa-arrow-right ms-1"></i>
+                    </a>
+                    <a href="{% url 'team:team_list' %}" class="btn btn-outline-primary" style="border-color: #160073; color: #160073; font-family: 'Work Sans', sans-serif; font-weight: 500; border-radius: 8px; padding: 0.75rem 1.5rem; transition: all 0.3s ease;">
+                        Meet Our Team <i class="fas fa-users ms-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modern Portfolio Section -->
+<section class="section-padding position-relative project-section-bg" style="background: linear-gradient(135deg, rgba(22, 0, 115, 0.7), rgba(246, 93, 0, 0.6)), url('{% load static %}{% static 'home/home_project_background.jpg' %}'); overflow: hidden; min-height: 100vh;">
+    <!-- Overlay for better text readability -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="background: linear-gradient(135deg, rgba(22, 0, 115, 0.3), rgba(246, 93, 0, 0.2)); z-index: 1;"></div>
+    
+    <div class="container position-relative" style="z-index: 2;">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-white fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">Our Portfolio</h6>
+                <h2 class="display-4 fw-light mb-4 text-white" style="font-family: 'Poppins', sans-serif; font-weight: 300; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">Projects That Inspire</h2>
+                <p class="lead text-white fs-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Discover how we've helped businesses transform their digital presence</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for project in projects|slice:":4" %}
+            <div class="col-lg-3 col-md-6">
+                <div class="card border-0 project-card" style="background: var(--bg-white); border-radius: 20px; box-shadow: 0 8px 30px rgba(22, 0, 115, 0.1); transition: all 0.3s ease; overflow: hidden; height: 450px; position: relative; border: 2px solid transparent;">
+                    <!-- Project Media -->
+                    <div class="position-relative" style="height: 300px; border-radius: 20px 20px 0 0; overflow: hidden;">
+                        <!-- Company Logo in top-right corner -->
+                        <div class="position-absolute top-0 end-0 m-3" style="z-index: 3;">
+                            <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; background: #f65d00; box-shadow: 0 4px 15px rgba(246, 93, 0, 0.3);">
+                                {% if project.client_logo %}
+                                    <img src="{{ project.client_logo.url }}" alt="{{ project.client_name }} Logo" style="width: 32px; height: 32px; object-fit: contain; filter: brightness(0) invert(1);">
+                                {% else %}
+                                    <i class="fas fa-building fa-lg text-white"></i>
+                                {% endif %}
+                            </div>
+                        </div>
+                        
+                        {% if project.image %}
+                            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="w-100 h-100" style="object-fit: cover; border-radius: 20px 20px 0 0;">
+                        {% else %}
+                            <!-- Placeholder when no image is available -->
+                            <div class="w-100 h-100 d-flex align-items-center justify-content-center" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 20px 20px 0 0;">
+                                <div class="text-center">
+                                    <i class="fas fa-image fa-3x text-muted mb-2" style="opacity: 0.3;"></i>
+                                    <p class="text-muted small mb-0" style="font-family: 'Work Sans', sans-serif;">Project Image</p>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Card Content -->
+                    <div class="card-body p-3 text-center d-flex flex-column justify-content-between project-card-content" style="height: 150px; transition: all 0.3s ease; background: var(--bg-white);">
+                        <div>
+                            <h5 class="card-title mb-2" style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 500; color: #160073;">{{ project.title }}</h5>
+                            <p class="card-text text-muted mb-2" style="font-size: 0.8rem; line-height: 1.3; font-family: 'Work Sans', sans-serif;">{{ project.description|truncatewords:8 }}</p>
+                        </div>
+                        <div>
+                            <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-primary btn-sm" style="border-radius: 12px; padding: 0.3rem 1rem; font-weight: 500; font-size: 0.75rem; font-family: 'Work Sans', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; background: #f65d00; border: none;">
+                                View Project <i class="fas fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="p-4">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background: var(--gradient-secondary); box-shadow: 0 6px 20px rgba(236, 72, 153, 0.25);">
+                        <i class="fas fa-folder-open fa-2x text-white"></i>
+                    </div>
+                    <h5 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600;">Portfolio Coming Soon</h5>
+                    <p class="text-muted">We're working on amazing projects. Check back soon!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'projects:project_list' %}" class="btn btn-outline-primary" style="border: 2px solid white; color: white; border-radius: 25px; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 300; font-family: 'Work Sans', sans-serif;">
+                View All Projects <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Modern Team Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); position: relative; overflow: hidden;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; color: #160073;">Our Team</h6>
+                <h2 class="display-4 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Meet the Experts</h2>
+                <p class="lead text-muted fs-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Talented professionals dedicated to delivering exceptional results</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            {% for member in team_members|slice:":4" %}
+            <div class="col-lg-3 col-md-6">
+                <div class="card text-center border-0 team-card" style="background: var(--bg-white); border-radius: 20px; box-shadow: 0 8px 30px rgba(22, 0, 115, 0.1); transition: all 0.3s ease; overflow: hidden; height: 400px; position: relative; border: 2px solid transparent;">
+                    
+                    <!-- Curvy Decorative Shapes -->
+                    <div class="position-absolute top-0 start-0" style="width: 80px; height: 80px; background: linear-gradient(135deg, rgba(22, 0, 115, 0.1), rgba(22, 0, 115, 0.05)); border-radius: 0 0 100% 0; z-index: 2;"></div>
+                    <div class="position-absolute top-0 end-0" style="width: 60px; height: 60px; background: linear-gradient(135deg, rgba(246, 93, 0, 0.1), rgba(246, 93, 0, 0.05)); border-radius: 0 0 0 100%; z-index: 2;"></div>
+                    <div class="position-absolute bottom-0 start-0" style="width: 50px; height: 50px; background: linear-gradient(135deg, rgba(6, 182, 212, 0.1), rgba(6, 182, 212, 0.05)); border-radius: 0 100% 0 0; z-index: 2;"></div>
+                    <div class="position-absolute bottom-0 end-0" style="width: 70px; height: 70px; background: linear-gradient(135deg, rgba(34, 197, 94, 0.1), rgba(34, 197, 94, 0.05)); border-radius: 100% 0 0 0; z-index: 2;"></div>
+                    <!-- Team Member Photo -->
+                    <div class="position-relative d-flex justify-content-center" style="padding: 30px 20px 20px 20px;">
+                        {% if member.photo %}
+                            <div class="rounded-circle overflow-hidden" style="width: 120px; height: 120px; border: 4px solid #b4b4b4; box-shadow: 0 8px 25px rgba(180, 180, 180, 0.3);">
+                                <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="w-100 h-100" style="object-fit: cover;">
+                            </div>
+                        {% else %}
+                            <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 120px; height: 120px; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border: 4px solid #b4b4b4; box-shadow: 0 8px 25px rgba(180, 180, 180, 0.3);">
+                                <i class="fas fa-user fa-2x text-muted"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Team Member Info -->
+                    <div class="card-body p-3 text-center">
+                        <h5 class="card-title mb-2" style="font-family: 'Poppins', sans-serif; font-size: 1.1rem; font-weight: 500; color: #160073;">{{ member.name }}</h5>
+                        <p class="text-muted fw-semibold mb-3" style="font-size: 0.9rem; color: #f65d00;">{{ member.role }}</p>
+                        <p class="card-text text-muted mb-4" style="font-size: 0.85rem; line-height: 1.4; font-family: 'Work Sans', sans-serif;">{{ member.bio|truncatewords:12 }}</p>
+                        
+                        <!-- Decorative Line -->
+                        <div class="decorative-line mb-3" style="width: 60px; height: 2px; background: linear-gradient(90deg, #160073, #f65d00); margin: 0 auto; border-radius: 1px;"></div>
+                        
+                        <!-- Social Media Icons (Hidden by default, shown on hover) -->
+                        <div class="social-icons" style="opacity: 0; transform: translateY(10px); transition: all 0.3s ease;">
+                            <div class="d-flex justify-content-center gap-2 flex-wrap">
+                                {% if member.linkedin_url %}
+                                <a href="{{ member.linkedin_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #0077b5, #005885); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(0, 119, 181, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-linkedin-in fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.twitter_url %}
+                                <a href="{{ member.twitter_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #1da1f2, #0d8bd9); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-twitter fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.github_url %}
+                                <a href="{{ member.github_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #333, #000); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-github fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.instagram_url %}
+                                <a href="{{ member.instagram_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #e4405f, #c13584); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(228, 64, 95, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-instagram fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.facebook_url %}
+                                <a href="{{ member.facebook_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #1877f2, #0d5bb8); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-facebook-f fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.youtube_url %}
+                                <a href="{{ member.youtube_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #ff0000, #cc0000); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-youtube fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.dribbble_url %}
+                                <a href="{{ member.dribbble_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #ea4c89, #c32361); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(234, 76, 137, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-dribbble fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.behance_url %}
+                                <a href="{{ member.behance_url }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #1769ff, #0d4bb8); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(23, 105, 255, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fab fa-behance fa-sm"></i>
+                                </a>
+                                {% endif %}
+                                {% if member.email %}
+                                <a href="mailto:{{ member.email }}" class="social-link" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, #f65d00, #e55100); color: white; text-decoration: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(246, 93, 0, 0.3); transition: all 0.3s ease;" target="_blank">
+                                    <i class="fas fa-envelope fa-sm"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <div class="p-4">
+                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background: var(--gradient-accent); box-shadow: 0 6px 20px rgba(79, 172, 254, 0.25);">
+                        <i class="fas fa-users fa-2x text-white"></i>
+                    </div>
+                    <h5 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600;">Team Coming Soon</h5>
+                    <p class="text-muted">We're assembling our amazing team. Check back soon!</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'team:team_list' %}" class="btn btn-outline-primary" style="border: 2px solid #160073; color: #160073; border-radius: 25px; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 300; font-family: 'Work Sans', sans-serif;">
+                Meet Our Full Team <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Modern Testimonials Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%); position: relative; overflow: hidden;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; color: #160073;">Client Testimonials</h6>
+                <h2 class="display-4 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">What Our Clients Say</h2>
+                <p class="lead text-muted fs-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Real feedback from businesses we've helped transform</p>
+            </div>
+        </div>
+        
+        <!-- Sliding Testimonials Container -->
+        <div class="testimonials-container">
+            <div class="testimonials-slide">
+                <!-- First set of testimonials -->
+                {% for testimonial in testimonials|slice:":6" %}
+                <div class="testimonial-card">
+                    <div class="card border-0 h-100 testimonial-float" style="background: var(--gradient-card); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                        <div class="card-body p-4">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-center">
+                                    {% for i in "12345" %}
+                                    <i class="fas fa-star text-warning me-1" style="font-size: 1rem; filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));"></i>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <blockquote class="mb-4">
+                                <p class="fst-italic text-muted" style="line-height: 1.5; font-weight: 500; font-size: 0.95rem;">"{{ testimonial.content|truncatewords:20 }}"</p>
+                            </blockquote>
+                            <div class="d-flex align-items-center">
+                                {% if testimonial.avatar %}
+                                <img src="{{ testimonial.avatar.url }}" alt="{{ testimonial.client_name }}" class="rounded-circle me-3" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid rgba(99, 102, 241, 0.2);">
+                                {% else %}
+                                <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px; background: var(--gradient-primary); border: 2px solid rgba(99, 102, 241, 0.2);">
+                                    <i class="fas fa-user text-white"></i>
+                                </div>
+                                {% endif %}
+                                <div>
+                                    <h6 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem;">{{ testimonial.client_name }}</h6>
+                                    <small class="text-muted fw-semibold" style="font-size: 0.85rem;">{{ testimonial.role }} at {{ testimonial.company }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <!-- Duplicate testimonials for seamless loop -->
+                {% for testimonial in testimonials|slice:":6" %}
+                <div class="testimonial-card">
+                    <div class="card border-0 h-100 testimonial-float" style="background: var(--gradient-card); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                        <div class="card-body p-4">
+                            <div class="mb-3">
+                                <div class="d-flex justify-content-center">
+                                    {% for i in "12345" %}
+                                    <i class="fas fa-star text-warning me-1" style="font-size: 1rem; filter: drop-shadow(0 2px 4px rgba(251, 191, 36, 0.3));"></i>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <blockquote class="mb-4">
+                                <p class="fst-italic text-muted" style="line-height: 1.5; font-weight: 500; font-size: 0.95rem;">"{{ testimonial.content|truncatewords:20 }}"</p>
+                            </blockquote>
+                            <div class="d-flex align-items-center">
+                                {% if testimonial.avatar %}
+                                <img src="{{ testimonial.avatar.url }}" alt="{{ testimonial.client_name }}" class="rounded-circle me-3" style="width: 45px; height: 45px; object-fit: cover; border: 2px solid rgba(99, 102, 241, 0.2);">
+                                {% else %}
+                                <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px; background: var(--gradient-primary); border: 2px solid rgba(99, 102, 241, 0.2);">
+                                    <i class="fas fa-user text-white"></i>
+                                </div>
+                                {% endif %}
+                                <div>
+                                    <h6 class="fw-bold mb-1" style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem;">{{ testimonial.client_name }}</h6>
+                                    <small class="text-muted fw-semibold" style="font-size: 0.85rem;">{{ testimonial.role }} at {{ testimonial.company }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        {% if not testimonials %}
+        <div class="text-center">
+            <div class="p-4">
+                <div class="d-inline-flex align-items-center justify-content-center rounded-circle mb-3" style="width: 80px; height: 80px; background: var(--gradient-primary); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);">
+                    <i class="fas fa-comments fa-2x text-white"></i>
+                </div>
+                <h5 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600;">Testimonials Coming Soon</h5>
+                <p class="text-muted">We're building our reputation. Check back soon!</p>
+            </div>
+        </div>
+        {% endif %}
+        
+        <div class="text-center mt-4">
+            <a href="{% url 'testimonials:testimonial_list' %}" class="btn btn-outline-primary" style="border: 2px solid #160073; color: #160073; border-radius: 25px; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 300; font-family: 'Work Sans', sans-serif;">
+                Read All Testimonials <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Modern Achievements Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); position: relative; overflow: hidden;">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; color: #160073;">Our Achievements</h6>
+                <h2 class="display-4 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Numbers That Speak</h2>
+                <p class="lead text-muted fs-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Milestones that reflect our commitment to excellence</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="achievement-card" style="background: var(--gradient-card); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div class="achievement-number" style="font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 2.5rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem;">150+</div>
+                    <div class="achievement-label" style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text-dark);">Projects Completed</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="achievement-card" style="background: var(--gradient-card); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div class="achievement-number" style="font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 2.5rem; background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem;">50+</div>
+                    <div class="achievement-label" style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text-dark);">Happy Clients</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="achievement-card" style="background: var(--gradient-card); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div class="achievement-number" style="font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 2.5rem; background: var(--gradient-accent); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem;">5+</div>
+                    <div class="achievement-label" style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text-dark);">Years Experience</div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="achievement-card" style="background: var(--gradient-card); border-radius: 16px; padding: 2rem 1.5rem; text-align: center; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden;">
+                    <div class="achievement-number" style="font-family: 'Poppins', sans-serif; font-weight: 300; font-size: 2.5rem; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 0.75rem;">24/7</div>
+                    <div class="achievement-label" style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 1rem; color: var(--text-dark);">Support Available</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modern CTA Section -->
+<section class="section-padding" style="background: var(--gradient-hero); position: relative; overflow: hidden;">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-3 fw-light text-white mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">Ready to Start Your Project?</h2>
+                <p class="lead text-white-50 mb-5 fs-4" style="font-family: 'Work Sans', sans-serif; font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,0.2);">Let's discuss how we can help bring your vision to life and transform your business with innovative technology solutions.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning px-5 py-3" style="font-size: 1rem; border-radius: 25px; box-shadow: 0 6px 20px rgba(251, 191, 36, 0.3); font-weight: 300; font-family: 'Work Sans', sans-serif;">
+                        <i class="fas fa-paper-plane me-2"></i>Get Started Today
+                    </a>
+                    <a href="{% url 'projects:project_list' %}" class="btn btn-outline-light px-5 py-3" style="font-size: 1rem; border-radius: 25px; border-width: 2px; backdrop-filter: blur(10px); font-weight: 300; font-family: 'Work Sans', sans-serif;">
+                        <i class="fas fa-eye me-2"></i>View Our Work
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modern Floating Elements -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events: none; overflow: hidden;">
+        <div class="position-absolute" style="top: 20%; left: 10%; width: 100px; height: 100px; background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border-radius: 50%; animation: float 10s ease-in-out infinite; backdrop-filter: blur(10px);"></div>
+        <div class="position-absolute" style="top: 60%; right: 15%; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(251,191,36,0.2), rgba(245,158,11,0.1)); border-radius: 50%; animation: float 12s ease-in-out infinite reverse; backdrop-filter: blur(10px);"></div>
+        <div class="position-absolute" style="top: 80%; left: 20%; width: 120px; height: 120px; background: linear-gradient(45deg, rgba(236,72,153,0.15), rgba(219,39,119,0.08)); border-radius: 50%; animation: float 14s ease-in-out infinite; backdrop-filter: blur(10px);"></div>
+    </div>
+</section>
+
+<!-- Floating Animation -->
+<style>
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+</style>
+{% endblock %}
+
+

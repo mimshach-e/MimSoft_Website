@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ service.name }} - {{ company_name }}{% endblock %}
+
+{% block content %}
+<!-- Elegant Hero Section with Custom Image -->
+<section class="hero-section" style="position: relative; min-height: 70vh; display: flex; align-items: center; background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(236, 72, 153, 0.8)), url('/media/services/ui_ux_design/ui-ux-hero-page.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="mb-4">
+                    <div class="d-inline-block p-3 bg-white bg-opacity-20 rounded-pill mb-4" style="backdrop-filter: blur(10px);">
+                        {% if service.icon %}
+                        <img src="{{ service.icon.url }}" alt="{{ service.name }} Icon" style="width: 60px; height: 60px; object-fit: contain; filter: brightness(0) invert(1);">
+                        {% else %}
+                        <i class="fas fa-cogs fa-2x text-white"></i>
+                        {% endif %}
+                    </div>
+                </div>
+                <h1 class="display-3 fw-bold mb-4 text-white" style="font-family: 'Outfit', sans-serif; font-weight: 900; text-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+                    {{ service.name }}
+                </h1>
+                <p class="lead mb-5 text-white-50 fs-4" style="font-weight: 500; text-shadow: 0 2px 10px rgba(0,0,0,0.2); max-width: 800px; margin: 0 auto;">
+                    {{ service.description|truncatewords:25 }}
+                </p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning px-5 py-3" style="font-size: 1rem; border-radius: 25px; box-shadow: 0 6px 20px rgba(251, 191, 36, 0.3); font-weight: 600;">
+                        <i class="fas fa-paper-plane me-2"></i>Get Started
+                    </a>
+                    <a href="#service-details" class="btn btn-outline-light px-5 py-3" style="font-size: 1rem; border-radius: 25px; border-width: 2px; backdrop-filter: blur(10px); font-weight: 600;">
+                        <i class="fas fa-arrow-down me-2"></i>Learn More
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Elegant Floating Elements -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events: none; overflow: hidden;">
+        <div class="position-absolute" style="top: 15%; left: 8%; width: 60px; height: 60px; background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05)); border-radius: 50%; animation: float 8s ease-in-out infinite; backdrop-filter: blur(10px);"></div>
+        <div class="position-absolute" style="top: 70%; right: 12%; width: 40px; height: 40px; background: linear-gradient(45deg, rgba(251,191,36,0.2), rgba(245,158,11,0.1)); border-radius: 50%; animation: float 10s ease-in-out infinite reverse; backdrop-filter: blur(10px);"></div>
+        <div class="position-absolute" style="top: 85%; left: 15%; width: 80px; height: 80px; background: linear-gradient(45deg, rgba(236,72,153,0.15), rgba(219,39,119,0.08)); border-radius: 50%; animation: float 12s ease-in-out infinite; backdrop-filter: blur(10px);"></div>
+    </div>
+</section>
+
+<!-- Service Details -->
+<section id="service-details" class="section-padding" style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="text-center mb-5">
+                    <h2 class="display-5 fw-bold mb-3" style="font-family: 'Outfit', sans-serif; font-weight: 800; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Service Overview</h2>
+                    <div class="mx-auto" style="width: 80px; height: 4px; background: var(--gradient-primary); border-radius: 2px;"></div>
+                </div>
+                <p class="lead text-muted mb-5 fs-5" style="font-weight: 500; line-height: 1.6;">{{ service.description }}</p>
+                
+                {% if service.specialized_solutions %}
+                <div class="mb-5">
+                    <h3 class="mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--text-dark);">Specialized Solutions</h3>
+                    <div class="bg-white p-4 rounded-3 shadow-sm" style="border-left: 4px solid #160073;">
+                        <div class="specialized-solutions" style="font-family: 'Work Sans', sans-serif; line-height: 1.7; color: var(--text-dark);">
+                            {{ service.specialized_solutions|linebreaks }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                
+                <h3 class="mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 600; color: var(--text-dark);">What We Deliver</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Custom Solutions</h6>
+                                <p class="text-muted small mb-0">Tailored to your business needs</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Professional Development</h6>
+                                <p class="text-muted small mb-0">Expert implementation</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Ongoing Support</h6>
+                                <p class="text-muted small mb-0">Continuous maintenance</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="flex-shrink-0 me-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h6 class="fw-bold mb-2">Training & Documentation</h6>
+                                <p class="text-muted small mb-0">Complete guidance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 class="mb-4 mt-5" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--text-dark);">Our Process</h3>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="card border-0" style="background: var(--gradient-card); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 70px; height: 70px; background: var(--gradient-primary); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);">
+                                        <i class="fas fa-lightbulb fa-lg text-white"></i>
+                                    </div>
+                                </div>
+                                <h6 class="fw-bold mb-2" style="font-family: 'Space Grotesk', sans-serif;">Discovery & Planning</h6>
+                                <small class="text-muted">Understanding your requirements</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0" style="background: var(--gradient-card); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 70px; height: 70px; background: var(--gradient-secondary); box-shadow: 0 6px 20px rgba(236, 72, 153, 0.25);">
+                                        <i class="fas fa-pencil-ruler fa-lg text-white"></i>
+                                    </div>
+                                </div>
+                                <h6 class="fw-bold mb-2" style="font-family: 'Space Grotesk', sans-serif;">Design & Development</h6>
+                                <small class="text-muted">Building your solution</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0" style="background: var(--gradient-card); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 70px; height: 70px; background: var(--gradient-accent); box-shadow: 0 6px 20px rgba(79, 172, 254, 0.25);">
+                                        <i class="fas fa-rocket fa-lg text-white"></i>
+                                    </div>
+                                </div>
+                                <h6 class="fw-bold mb-2" style="font-family: 'Space Grotesk', sans-serif;">Launch & Deploy</h6>
+                                <small class="text-muted">Going live with your project</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card border-0" style="background: var(--gradient-card); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);">
+                            <div class="card-body text-center p-4">
+                                <div class="mb-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 70px; height: 70px; background: var(--gradient-primary); box-shadow: 0 6px 20px rgba(99, 102, 241, 0.25);">
+                                        <i class="fas fa-headset fa-lg text-white"></i>
+                                    </div>
+                                </div>
+                                <h6 class="fw-bold mb-2" style="font-family: 'Space Grotesk', sans-serif;">Support & Maintenance</h6>
+                                <small class="text-muted">Ongoing assistance</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card sticky-top border-0" style="top: 100px; background: var(--gradient-card); border-radius: 16px; box-shadow: 0 8px 25px rgba(0,0,0,0.08);">
+                    <div class="card-body p-4">
+                        <h5 class="card-title mb-3" style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; color: var(--text-dark);">Get Started</h5>
+                        <p class="text-muted mb-4" style="line-height: 1.6;">Ready to begin your project? Let's discuss your requirements.</p>
+                        <a href="{% url 'contact:contact' %}" class="btn btn-primary w-100 mb-3" style="border-radius: 25px; padding: 0.75rem 2rem; font-weight: 600;">
+                            <i class="fas fa-paper-plane me-2"></i>Contact Us
+                        </a>
+                        <a href="{% url 'projects:project_list' %}" class="btn btn-outline-primary w-100" style="border-radius: 25px; padding: 0.75rem 2rem; font-weight: 600; border-width: 2px;">
+                            <i class="fas fa-eye me-2"></i>View Similar Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Services -->
+<section class="section-padding" style="background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold mb-3" style="font-family: 'Outfit', sans-serif; font-weight: 800; background: var(--gradient-secondary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Other Services</h2>
+                <p class="lead text-muted fs-5" style="font-weight: 500;">Explore our full range of digital solutions.</p>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="{% url 'services:service_list' %}" class="btn btn-primary" style="border-radius: 25px; padding: 0.75rem 2rem; font-size: 1rem; font-weight: 600; box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);">
+                View All Services <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+

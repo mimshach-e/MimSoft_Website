@@ -1,0 +1,226 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ project.title }} - {{ company_name|default:"MimSoft Corporation" }}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                {% if project.client_logo %}
+                <div class="mb-4">
+                    <img src="{{ project.client_logo.url }}" alt="{{ project.client_name }} Logo" class="client-logo" style="height: 80px; width: auto; max-width: 200px; object-fit: contain; filter: brightness(0) invert(1);">
+                </div>
+                {% endif %}
+                <h1 class="display-3 fw-bold mb-4">{{ project.title }}</h1>
+                <p class="lead mb-5">A {{ project.get_category_display }} project for {{ project.client_name }}</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning btn-lg px-4 py-2">
+                        <i class="fas fa-paper-plane me-2"></i>Start Similar Project
+                    </a>
+                    <a href="{% url 'projects:project_list' %}" class="btn btn-outline-light btn-lg px-4 py-2">
+                        <i class="fas fa-eye me-2"></i>View All Projects
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Project Details -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                {% if project.image %}
+                <div class="mb-5">
+                    <div class="position-relative overflow-hidden rounded-4">
+                        <img src="{{ project.image.url }}" alt="{{ project.title }}" class="img-fluid w-100 shadow-lg" style="max-height: 500px; object-fit: cover;">
+                    </div>
+                </div>
+                {% endif %}
+                
+                <h2 class="display-6 fw-bold mb-4">Project Overview</h2>
+                <p class="lead text-muted mb-4">{{ project.description }}</p>
+                
+                <div class="row mb-5">
+                    <div class="col-md-6">
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold mb-3">
+                                    <i class="fas fa-info-circle text-primary me-2"></i>Project Details
+                                </h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3 d-flex align-items-center">
+                                        <i class="fas fa-user text-primary me-3"></i>
+                                        <div>
+                                            <strong>Client:</strong><br>
+                                            <span class="text-muted">{{ project.client_name }}</span>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-center">
+                                        <i class="fas fa-tag text-primary me-3"></i>
+                                        <div>
+                                            <strong>Category:</strong><br>
+                                            <span class="text-muted">{{ project.get_category_display }}</span>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3 d-flex align-items-center">
+                                        <i class="fas fa-calendar text-primary me-3"></i>
+                                        <div>
+                                            <strong>Date Delivered:</strong><br>
+                                            <span class="text-muted">{{ project.date_delivered|date:"F Y" }}</span>
+                                        </div>
+                                    </li>
+                                    {% if project.project_url %}
+                                    <li class="mb-0 d-flex align-items-center">
+                                        <i class="fas fa-link text-primary me-3"></i>
+                                        <div>
+                                            <strong>Project URL:</strong><br>
+                                            <a href="{{ project.project_url }}" target="_blank" class="text-decoration-none">
+                                                Visit Project <i class="fas fa-external-link-alt ms-1"></i>
+                                            </a>
+                                        </div>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        {% if project.service_provided.all %}
+                        <div class="card border-0 shadow-sm h-100">
+                            <div class="card-body p-4">
+                                <h5 class="card-title fw-bold mb-3">
+                                    <i class="fas fa-cogs text-primary me-2"></i>Services Provided
+                                </h5>
+                                <div class="d-flex flex-wrap gap-2">
+                                    {% for service in project.service_provided.all %}
+                                    <span class="badge bg-primary fs-6 px-3 py-2">{{ service.name }}</span>
+                                    {% endfor %}
+                                </div>
+                                <div class="mt-4">
+                                    <h6 class="fw-bold mb-2">What We Delivered:</h6>
+                                    <ul class="list-unstyled text-muted">
+                                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Custom software solution</li>
+                                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>User training & documentation</li>
+                                        <li class="mb-1"><i class="fas fa-check text-success me-2"></i>Ongoing support & maintenance</li>
+                                        <li class="mb-0"><i class="fas fa-check text-success me-2"></i>Performance optimization</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                {% if project.testimonial %}
+                <div class="card border-0 shadow-sm bg-light">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-3">
+                            <i class="fas fa-quote-left text-primary me-2"></i>Client Testimonial
+                        </h5>
+                        <blockquote class="blockquote mb-0">
+                            <p class="mb-3 fs-5 fst-italic">"{{ project.testimonial.content }}"</p>
+                            <footer class="blockquote-footer">
+                                <div class="d-flex align-items-center">
+                                    {% if project.testimonial.avatar %}
+                                    <img src="{{ project.testimonial.avatar.url }}" alt="{{ project.testimonial.client_name }}" class="rounded-circle me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                                    {% else %}
+                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                        <i class="fas fa-user text-white"></i>
+                                    </div>
+                                    {% endif %}
+                                    <div>
+                                        <strong>{{ project.testimonial.client_name }}</strong><br>
+                                        <small class="text-muted">{{ project.testimonial.role }} at {{ project.testimonial.company }}</small>
+                                    </div>
+                                </div>
+                            </footer>
+                        </blockquote>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm sticky-top" style="top: 100px;">
+                    <div class="card-body p-4">
+                        <h5 class="card-title fw-bold mb-3">
+                            <i class="fas fa-lightbulb text-primary me-2"></i>Interested in Similar Work?
+                        </h5>
+                        <p class="text-muted mb-4">Let's discuss how we can help bring your vision to life and create a solution tailored to your needs.</p>
+                        <div class="d-grid gap-3">
+                            <a href="{% url 'contact:contact' %}" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i>Get a Quote
+                            </a>
+                            <a href="{% url 'projects:project_list' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-eye me-2"></i>View All Projects
+                            </a>
+                            <a href="{% url 'services:service_list' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-cogs me-2"></i>Our Services
+                            </a>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h6 class="fw-bold mb-3">Project Highlights</h6>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <div class="text-primary fw-bold fs-4">{{ project.date_delivered|date:"Y" }}</div>
+                                <small class="text-muted">Year Completed</small>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-primary fw-bold fs-4">{{ project.service_provided.count }}</div>
+                                <small class="text-muted">Services Used</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Projects -->
+<section class="section-padding bg-light">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h6 class="text-primary fw-bold text-uppercase mb-3">More Projects</h6>
+                <h2 class="display-5 fw-bold mb-3">Explore Our Other Work</h2>
+                <p class="lead text-muted">Discover more projects in similar categories and see the breadth of our expertise</p>
+            </div>
+        </div>
+        
+        <div class="text-center">
+            <a href="{% url 'projects:project_list' %}" class="btn btn-primary btn-lg px-5 py-3">
+                <i class="fas fa-eye me-2"></i>View All Projects
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold text-white mb-4">Ready to Start Your Project?</h2>
+                <p class="lead text-white-50 mb-5">Let's discuss how we can help bring your vision to life and transform your business with innovative technology solutions.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning btn-lg px-5 py-3">
+                        <i class="fas fa-paper-plane me-2"></i>Get Started Today
+                    </a>
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline-light btn-lg px-5 py-3">
+                        <i class="fas fa-cogs me-2"></i>Our Services
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
