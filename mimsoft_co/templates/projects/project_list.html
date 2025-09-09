@@ -3,16 +3,70 @@
 {% block title %}Our Portfolio - {{ company_name|default:"MimSoft Corporation" }}{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="hero-section">
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h6 class="text-warning fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">Our Portfolio</h6>
-                <h1 class="display-3 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Projects That Inspire</h1>
-                <p class="lead mb-5" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Discover how we've helped businesses transform their digital presence and achieve remarkable growth</p>
+<!-- Hero Section with Navbar Integration -->
+<section class="hero-section" style="background: linear-gradient(rgba(22, 0, 115, 0.7), rgba(22, 0, 115, 0.5)), url('/media/home/hame_hero_page_1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow: hidden; border-radius: 0; margin: 10px 10px 0 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
+    
+    <!-- Hero Navigation -->
+    <div class="hero-nav" style="position: absolute; top: 0; left: 0; right: 0; z-index: 1000; padding: 1.5rem 0; transition: all 0.4s ease; opacity: 1; visibility: visible;">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <!-- Logo and Brand -->
+                <a href="{% url 'core:home' %}" class="hero-brand" style="font-family: 'Ebrima', sans-serif; font-weight: 700; font-size: 1.75rem; color: white; text-decoration: none; display: flex; align-items: center; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                    <img src="/media/company/company_logo/mimsoft corporation-logo icon.png" alt="{{ company_name|default:'MimSoft' }} Logo" style="height: 40px; width: auto; object-fit: contain; margin-right: 0.5rem;">
+                    {{ company_name|default:"MimSoft" }}
+                </a>
+                
+                <!-- Navigation Menu -->
+                <div class="hero-nav-menu d-none d-lg-flex">
+                    <a href="{% url 'core:home' %}" class="hero-nav-link" style="color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Home</a>
+                    <a href="{% url 'services:service_list' %}" class="hero-nav-link" style="color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Services</a>
+                    <a href="{% url 'projects:project_list' %}" class="hero-nav-link active" style="color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.3); background: rgba(246, 93, 0, 0.2); border: 1px solid rgba(246, 93, 0, 0.4); box-shadow: 0 4px 15px rgba(246, 93, 0, 0.2);">Portfolio</a>
+                    <a href="{% url 'team:team_list' %}" class="hero-nav-link" style="color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Team</a>
+                    <a href="{% url 'testimonials:testimonial_list' %}" class="hero-nav-link" style="color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Testimonials</a>
+                    <a href="{% url 'core:about' %}" class="hero-nav-link" style="color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">About</a>
+                    <a href="{% url 'contact:contact' %}" class="hero-nav-link" style="color: white; text-decoration: none; margin: 0 1rem; padding: 0.5rem 1rem; border-radius: 8px; transition: all 0.3s ease; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Contact</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button class="hero-mobile-toggle d-lg-none" style="background: none; border: none; color: white; font-size: 1.5rem; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
+    </div>
+    
+    <!-- Hero Content -->
+    <div class="container flex-grow-1 d-flex align-items-center">
+        <div class="row align-items-center w-100">
+            <div class="col-lg-8 mx-auto text-center">
+                <div class="hero-content">
+                    <!-- Our Portfolio Badge -->
+                    <div class="mb-4">
+                        <h6 class="text-warning fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">Our Portfolio</h6>
+                    </div>
+                    
+                    <!-- Main Heading -->
+                    <h1 class="display-3 fw-light mb-4 text-white" style="font-family: 'Poppins', sans-serif; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.3); font-weight: 300;">
+                        Projects That
+                        <span class="text-warning" style="background: linear-gradient(45deg, #f97316, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; font-weight: 400;">Inspire</span>
+                    </h1>
+                    
+                    <!-- Subheading -->
+                    <p class="lead mb-5 text-white" style="font-family: 'Work Sans', sans-serif; font-size: 1.3rem; line-height: 1.6; max-width: 700px; margin: 0 auto; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">
+                        Discover how we've helped businesses transform their digital presence and achieve remarkable growth
+                    </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Floating Elements -->
+    <div class="position-absolute top-0 start-0 w-100 h-100" style="pointer-events: none; overflow: hidden;">
+        <div class="position-absolute" style="top: 15%; left: 8%; width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%; animation: float 8s ease-in-out infinite; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);"></div>
+        <div class="position-absolute" style="top: 70%; right: 12%; width: 60px; height: 60px; background: rgba(249,115,22,0.2); border-radius: 50%; animation: float 10s ease-in-out infinite reverse; backdrop-filter: blur(10px); border: 1px solid rgba(249,115,22,0.3);"></div>
+        <div class="position-absolute" style="top: 85%; left: 15%; width: 100px; height: 100px; background: rgba(37,99,235,0.2); border-radius: 50%; animation: float 12s ease-in-out infinite; backdrop-filter: blur(10px); border: 1px solid rgba(37,99,235,0.3);"></div>
+        <div class="position-absolute" style="top: 30%; right: 25%; width: 40px; height: 40px; background: rgba(6,182,212,0.3); border-radius: 50%; animation: float 6s ease-in-out infinite; backdrop-filter: blur(10px); border: 1px solid rgba(6,182,212,0.4);"></div>
     </div>
 </section>
 
@@ -48,10 +102,10 @@
                                 </select>
                             </div>
                             <div class="col-md-4 d-flex align-items-end">
-                                <button type="submit" class="btn btn-primary me-2">
+                                <button type="submit" class="btn me-2" style="background-color: #160073; border-color: #160073; color: white; font-weight: 400;">
                                     <i class="fas fa-filter me-2"></i>Filter
                                 </button>
-                                <a href="{% url 'projects:project_list' %}" class="btn btn-outline-secondary">
+                                <a href="{% url 'projects:project_list' %}" class="btn btn-outline-secondary" style="font-weight: 400;">
                                     <i class="fas fa-times me-2"></i>Clear
                                 </a>
                             </div>
@@ -70,49 +124,56 @@
         <div class="row g-4">
             {% for project in projects %}
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-sm">
+                <div class="card h-100 border-0 shadow-sm position-relative" style="background-color: #160073 !important;">
+                    <!-- Company Logo in Top Right Corner -->
+                    {% if project.client_logo %}
+                    <div class="position-absolute" style="top: 15px; right: 15px; z-index: 10; background: white; padding: 12px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <img src="{{ project.client_logo.url }}" alt="{{ project.client_name }} Logo" class="client-logo" style="height: 50px; width: auto; max-width: 120px; object-fit: contain;">
+                    </div>
+                    {% endif %}
+                    
                     {% if project.image %}
                     <div class="position-relative overflow-hidden">
                         <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}" style="height: 250px; object-fit: cover;">
                         <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark bg-opacity-50 d-flex align-items-center justify-content-center opacity-0" style="transition: opacity 0.3s ease;">
-                            <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-light">
+                            <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-light" style="font-weight: 400;">
                                 <i class="fas fa-eye me-2"></i>View Project
                             </a>
                         </div>
                     </div>
                     {% endif %}
-                    <div class="card-body p-4">
-                        <h5 class="card-title fw-bold mb-3">{{ project.title }}</h5>
-                        <p class="card-text text-muted mb-3">{{ project.description|truncatewords:20 }}</p>
+                    <div class="card-body p-4 d-flex flex-column" style="background-color: #160073 !important;">
+                        <h5 class="card-title mb-3" style="font-family: 'Poppins', sans-serif; font-weight: 500; color: white !important;">{{ project.title }}</h5>
+                        <p class="card-text mb-3" style="color: rgba(255,255,255,0.8) !important;">{{ project.description|truncatewords:20 }}</p>
                         
-                        <!-- Client Logo and Name Section -->
+                        <!-- Client Name Section -->
                         <div class="mb-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                {% if project.client_logo %}
-                                <img src="{{ project.client_logo.url }}" alt="{{ project.client_name }} Logo" class="client-logo me-2" style="height: 30px; width: auto; max-width: 80px; object-fit: contain;">
-                                {% endif %}
-                                <small class="text-muted fw-bold">{{ project.client_name }}</small>
-                            </div>
+                                <small class="fw-bold" style="color: rgba(255,255,255,0.9) !important;">{{ project.client_name }}</small>
                         </div>
                         
                         <div class="mb-3">
-                            <span class="badge bg-primary me-2">{{ project.get_category_display }}</span>
-                            <small class="text-muted">{{ project.date_delivered|date:"M Y" }}</small>
+                            <span class="badge me-2" style="background-color: white; color: #160073;">{{ project.get_category_display }}</span>
+                            <small style="color: rgba(255,255,255,0.8) !important;">{{ project.date_delivered|date:"M Y" }}</small>
                         </div>
                         
-                        {% if project.service_provided.all %}
+                        <!-- Services Section - Always present for consistent spacing -->
                         <div class="mb-3">
-                            <small class="text-muted fw-semibold d-block mb-2">Services:</small>
-                            <div class="d-flex flex-wrap gap-1">
-                                {% for service in project.service_provided.all %}
-                                <span class="badge bg-secondary">{{ service.name }}</span>
-                                {% endfor %}
-                            </div>
+                            {% if project.service_provided.all %}
+                                <small class="fw-semibold d-block mb-2" style="color: rgba(255,255,255,0.9) !important;">Services:</small>
+                                <div class="d-flex flex-wrap gap-1">
+                                    {% for service in project.service_provided.all %}
+                                    <span class="badge" style="background-color: #8a8a8a; color: white;">{{ service.name }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <!-- Empty space to maintain consistent card height -->
+                                <div style="height: 40px;"></div>
+                            {% endif %}
                         </div>
-                        {% endif %}
                         
-                        <div class="d-flex justify-content-between align-items-center">
-                            <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-outline-primary btn-sm">
+                        <!-- View Details Button - Always at bottom -->
+                        <div class="mt-auto">
+                            <a href="{% url 'projects:project_detail' project.pk %}" class="btn btn-sm" style="border-color: white; color: white; background-color: transparent; font-weight: 400;" onmouseover="this.style.backgroundColor='white'; this.style.color='#160073';" onmouseout="this.style.backgroundColor='transparent'; this.style.color='white';">
                                 View Details <i class="fas fa-arrow-right ms-1"></i>
                             </a>
                         </div>
@@ -127,7 +188,7 @@
                 <i class="fas fa-search fa-4x text-muted mb-3"></i>
                 <h3>No projects found</h3>
                 <p class="text-muted">Try adjusting your filters or browse all projects.</p>
-                <a href="{% url 'projects:project_list' %}" class="btn btn-primary">
+                <a href="{% url 'projects:project_list' %}" class="btn" style="background-color: #f65d00; border-color: #f65d00; color: white; font-weight: 400;">
                     <i class="fas fa-eye me-2"></i>View All Projects
                 </a>
             </div>
@@ -136,18 +197,20 @@
     </div>
 </section>
 
-<!-- CTA Section -->
-<section class="section-padding" style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);">
-    <div class="container text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h2 class="display-5 fw-bold text-white mb-4">Ready to Start Your Project?</h2>
-                <p class="lead text-white-50 mb-5">Let's discuss how we can help bring your vision to life and transform your business with innovative technology solutions.</p>
-                <div class="d-flex flex-wrap justify-content-center gap-3">
-                    <a href="{% url 'contact:contact' %}" class="btn btn-warning btn-lg px-5 py-3">
+<!-- Modern CTA Section -->
+<section class="cta-section" style="background: url('/media/home/software dev banner_start_project.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; position: relative; overflow: hidden; min-height: 30vh; display: flex; align-items: center; padding: 40px 0;">
+    <!-- Black Overlay -->
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)); z-index: 1;"></div>
+    <div class="container" style="position: relative; z-index: 2;">
+        <div class="row justify-content-start">
+            <div class="col-lg-6">
+                <h2 class="display-3 fw-light text-white mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300; text-shadow: 0 6px 25px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5); letter-spacing: -0.02em;">Ready to Start Your Project?</h2>
+                <p class="lead text-white mb-5 fs-4" style="font-family: 'Work Sans', sans-serif; font-weight: 500; text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 1px 5px rgba(0,0,0,0.4); line-height: 1.6;">Let's discuss how we can help bring your vision to life and transform your business with innovative technology solutions.</p>
+                <div class="d-flex flex-wrap gap-4">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning px-5 py-3" style="font-size: 1rem; border-radius: 30px; box-shadow: 0 8px 25px rgba(246, 93, 0, 0.4), 0 4px 10px rgba(0,0,0,0.2); font-weight: 300; font-family: 'Work Sans', sans-serif; transition: all 0.3s ease; border: none; background: linear-gradient(135deg, #f65d00, #ff7c00); color: white;">
                         <i class="fas fa-paper-plane me-2"></i>Get Started Today
                     </a>
-                    <a href="{% url 'services:service_list' %}" class="btn btn-outline-light btn-lg px-5 py-3">
+                    <a href="{% url 'services:service_list' %}" class="btn btn-outline-light px-5 py-3" style="font-size: 1rem; border-radius: 30px; border-width: 2px; backdrop-filter: blur(15px); font-weight: 300; font-family: 'Work Sans', sans-serif; transition: all 0.3s ease; background: rgba(255,255,255,0.1);" onmouseover="this.style.background='white'; this.style.color='#000'; this.style.borderColor='white'; this.style.boxShadow='0 8px 25px rgba(255,255,255,0.3)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.color='white'; this.style.borderColor='white'; this.style.boxShadow='none';">
                         <i class="fas fa-cogs me-2"></i>Our Services
                     </a>
                 </div>
