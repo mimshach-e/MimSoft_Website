@@ -3,6 +3,39 @@
 {% block title %}Our Team - {{ company_name|default:"MimSoft Corporation" }}{% endblock %}
 
 {% block content %}
+<style>
+/* Modern Social Media Icons Hover Effect - Bottom Bar */
+.card:hover .social-icon {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+.card:hover .position-absolute[style*="opacity: 0"] {
+    opacity: 1 !important;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px) scale(1.1) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
+}
+
+.social-icon:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.social-icon:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+/* Glass Effect Hover for Values Cards */
+.text-center.p-4:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3) !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+}
+</style>
+
 <!-- Hero Section with Navbar Integration -->
 <section class="hero-section" style="background: linear-gradient(rgba(22, 0, 115, 0.7), rgba(22, 0, 115, 0.5)), url('/media/home/hame_hero_page_1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; min-height: 100vh; display: flex; flex-direction: column; position: relative; overflow: hidden; border-radius: 0; margin: 10px 10px 0 10px; box-shadow: 0 20px 60px rgba(0,0,0,0.15); border: 1px solid rgba(255,255,255,0.1);">
     
@@ -42,11 +75,11 @@
                 <div class="hero-content">
                     <!-- Our Team Badge -->
                     <div class="mb-4">
-                        <h6 class="text-warning fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">Our Team</h6>
+                        <h6 class="text-warning text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; font-weight: 500;">Our Team</h6>
                     </div>
                     
                     <!-- Main Heading -->
-                    <h1 class="display-3 fw-light mb-4 text-white" style="font-family: 'Poppins', sans-serif; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.3); font-weight: 300;">
+                    <h1 class="display-3 mb-4 text-white" style="font-family: 'Poppins', sans-serif; line-height: 1.1; text-shadow: 0 4px 20px rgba(0,0,0,0.3); font-weight: 400;">
                         Meet the
                         <span class="text-warning" style="background: linear-gradient(45deg, #f97316, #fb923c); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none; font-weight: 400;">Experts</span>
                     </h1>
@@ -75,44 +108,47 @@
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-lg-8 mx-auto">
-                <h6 class="text-primary fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem;">Who We Are</h6>
+                <h6 class="fw-bold text-uppercase mb-3" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px; font-size: 0.9rem; color: #160073;">Who We Are</h6>
                 <h2 class="display-5 fw-light mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300;">Passionate Professionals</h2>
                 <p class="lead text-muted" style="font-family: 'Work Sans', sans-serif; font-weight: 500;">Our diverse team brings together expertise from various domains to create comprehensive solutions that drive business success</p>
             </div>
         </div>
         
         {% if team_members %}
-        <div class="row g-4">
+        <div class="row g-3">
             {% for member in team_members %}
-            <div class="col-lg-4 col-md-6">
-                <div class="card text-center border-0 shadow-sm h-100">
+            <div class="col-lg-4 col-md-6 col-xl-3">
+                <div class="card text-center border-0 shadow-sm h-100" style="background-color: white !important;">
                     {% if member.photo %}
                     <div class="position-relative overflow-hidden">
-                        <img src="{{ member.photo.url }}" class="card-img-top" alt="{{ member.name }}" style="height: 300px; object-fit: cover;">
-                        <div class="position-absolute bottom-0 start-0 w-100 p-3" style="background: linear-gradient(transparent, rgba(0,0,0,0.8));">
-                            <div class="d-flex justify-content-center gap-2">
+                        <img src="{{ member.photo.url }}" class="card-img-top" alt="{{ member.name }}" style="height: 220px; object-fit: cover;">
+                        <!-- Social Media Icons Bar at Bottom -->
+                        <div class="position-absolute bottom-0 start-0 w-100 p-2" style="background: linear-gradient(transparent, rgba(0,0,0,0.8)); opacity: 0; transition: all 0.3s ease;">
+                            <div class="d-flex justify-content-center gap-3">
                                 {% if member.linkedin_url %}
-                                <a href="{{ member.linkedin_url }}" class="btn btn-sm btn-primary rounded-circle" target="_blank" title="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
+                                <a href="{{ member.linkedin_url }}" class="social-icon" target="_blank" title="LinkedIn" style="width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(135deg, #160073, #2d1b69); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(22, 0, 115, 0.4); transform: translateY(10px);">
+                                    <i class="fab fa-linkedin-in" style="font-size: 0.9rem;"></i>
                                 </a>
                                 {% endif %}
-                                <a href="mailto:info@mimsoft.com" class="btn btn-sm btn-secondary rounded-circle" title="Email">
-                                    <i class="fas fa-envelope"></i>
+                                <a href="mailto:info@mimsoft.com" class="social-icon" title="Email" style="width: 35px; height: 35px; border-radius: 50%; background: linear-gradient(135deg, #f65d00, #ff7c00); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(246, 93, 0, 0.4); transform: translateY(10px);">
+                                    <i class="fas fa-envelope" style="font-size: 0.9rem;"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
                     {% else %}
-                    <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 300px;">
-                        <i class="fas fa-user fa-4x text-muted"></i>
+                    <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 220px; background-color: #f8f9fa !important;">
+                        <i class="fas fa-user fa-4x" style="color: #6b7280 !important;"></i>
                     </div>
                     {% endif %}
-                    <div class="card-body p-4">
-                        <h5 class="card-title fw-bold mb-2">{{ member.name }}</h5>
-                        <p class="text-primary fw-semibold mb-3">{{ member.role }}</p>
-                        <p class="card-text text-muted mb-3">{{ member.bio|truncatewords:25 }}</p>
+                    <div class="card-body p-3" style="background-color: white !important;">
+                        <h5 class="card-title mb-1" style="font-family: 'Poppins', sans-serif; font-weight: 500; font-size: 1.1rem; color: #160073 !important;">{{ member.name }}</h5>
+                        <p class="fw-semibold mb-2" style="font-size: 0.9rem; color: #f65d00 !important;">{{ member.role }}</p>
+                        <p class="card-text mb-3" style="font-size: 0.9rem; color: #6b7280 !important;">{{ member.bio|truncatewords:20 }}</p>
+                        <!-- Classic Horizontal Divider -->
+                        <hr class="my-3" style="border: none; height: 1px; background: #d1d5db; margin: 0.75rem -1rem; width: calc(100% + 2rem);">
                         <div class="d-flex justify-content-center">
-                            <span class="badge bg-light text-dark me-2">{{ member.department }}</span>
+                            <span class="badge me-2" style="background-color: #f8f9fa; color: #6b7280; border: 1px solid #e5e7eb; font-size: 0.8rem; padding: 0.4rem 0.8rem;">{{ member.department }}</span>
                         </div>
                     </div>
                 </div>
@@ -132,59 +168,59 @@
 </section>
 
 <!-- Team Values -->
-<section class="section-padding bg-light">
+<section class="section-padding" style="background: linear-gradient(rgba(22, 0, 115, 0.8), rgba(22, 0, 115, 0.6)), url('/media/home/hame_hero_page_1.jpg'); background-size: cover; background-position: center; background-attachment: fixed; position: relative;">
     <div class="container">
         <div class="row text-center mb-5">
             <div class="col-lg-8 mx-auto">
-                <h6 class="text-primary fw-bold text-uppercase mb-3">Our Values</h6>
-                <h2 class="display-5 fw-bold mb-4">What Drives Us</h2>
-                <p class="lead text-muted">Core principles that guide our team's work and relationships</p>
+                <h6 class="fw-bold text-uppercase mb-3" style="color: #f65d00;">Our Values</h6>
+                <h2 class="display-5 mb-4" style="font-weight: 500; color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5);">What Drives Us</h2>
+                <p class="lead" style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.3);">Core principles that guide our team's work and relationships</p>
             </div>
         </div>
         
         <div class="row g-4">
-            <div class="col-lg-3 col-md-6">
-                <div class="text-center p-4">
+            <div class="col-lg-3 col-md-6 d-flex">
+                <div class="text-center p-4 w-100 d-flex flex-column" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; min-height: 280px;">
                     <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
-                            <i class="fas fa-lightbulb fa-2x text-primary"></i>
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                            <i class="fas fa-lightbulb fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
                         </div>
                     </div>
-                    <h5 class="fw-bold mb-3">Innovation</h5>
-                    <p class="text-muted">We constantly explore new technologies and approaches to deliver cutting-edge solutions.</p>
+                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Innovation</h5>
+                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We constantly explore new technologies and approaches to deliver cutting-edge solutions.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="text-center p-4">
+                <div class="text-center p-4" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
                     <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
-                            <i class="fas fa-handshake fa-2x text-primary"></i>
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                            <i class="fas fa-handshake fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
                         </div>
                     </div>
-                    <h5 class="fw-bold mb-3">Collaboration</h5>
-                    <p class="text-muted">We work together as a team, leveraging diverse skills and perspectives to achieve excellence.</p>
+                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Collaboration</h5>
+                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We work together as a team, leveraging diverse skills and perspectives to achieve excellence.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="text-center p-4">
+                <div class="text-center p-4" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
                     <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
-                            <i class="fas fa-star fa-2x text-primary"></i>
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                            <i class="fas fa-star fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
                         </div>
                     </div>
-                    <h5 class="fw-bold mb-3">Excellence</h5>
-                    <p class="text-muted">We strive for excellence in everything we do, from code quality to user experience.</p>
+                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Excellence</h5>
+                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We strive for excellence in everything we do, from code quality to user experience.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="text-center p-4">
+                <div class="text-center p-4" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
                     <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
-                            <i class="fas fa-heart fa-2x text-primary"></i>
+                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                            <i class="fas fa-heart fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
                         </div>
                     </div>
-                    <h5 class="fw-bold mb-3">Passion</h5>
-                    <p class="text-muted">We're passionate about technology and its power to transform businesses and lives.</p>
+                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Passion</h5>
+                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We're passionate about technology and its power to transform businesses and lives.</p>
                 </div>
             </div>
         </div>
@@ -196,15 +232,15 @@
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6 mb-5 mb-lg-0">
-                <h6 class="text-primary fw-bold text-uppercase mb-3">Join Our Team</h6>
-                <h2 class="display-6 fw-bold mb-4">Grow With Us</h2>
+                <h6 class="fw-bold text-uppercase mb-3" style="color: #160073;">Join Our Team</h6>
+                <h2 class="display-6 mb-4" style="font-weight: 500;">Grow With Us</h2>
                 <p class="lead text-muted mb-4">We're always looking for talented individuals who share our passion for innovation and excellence.</p>
                 <p class="text-muted mb-4">Join a dynamic team where you can work on cutting-edge projects, learn new technologies, and make a real impact on businesses worldwide.</p>
-                <div class="row g-4">
+                <div class="row g-3">
                     <div class="col-sm-6">
                         <div class="d-flex align-items-start">
                             <div class="flex-shrink-0 me-3">
-                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #160073;">
                                     <i class="fas fa-check text-white"></i>
                                 </div>
                             </div>
@@ -217,7 +253,7 @@
                     <div class="col-sm-6">
                         <div class="d-flex align-items-start">
                             <div class="flex-shrink-0 me-3">
-                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #160073;">
                                     <i class="fas fa-check text-white"></i>
                                 </div>
                             </div>
@@ -230,7 +266,7 @@
                     <div class="col-sm-6">
                         <div class="d-flex align-items-start">
                             <div class="flex-shrink-0 me-3">
-                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #160073;">
                                     <i class="fas fa-check text-white"></i>
                                 </div>
                             </div>
@@ -243,7 +279,7 @@
                     <div class="col-sm-6">
                         <div class="d-flex align-items-start">
                             <div class="flex-shrink-0 me-3">
-                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                <div class="rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px; background-color: #160073;">
                                     <i class="fas fa-check text-white"></i>
                                 </div>
                             </div>
@@ -257,12 +293,12 @@
             </div>
             <div class="col-lg-6">
                 <div class="position-relative">
-                    <div class="bg-primary bg-opacity-10 rounded-4 p-5">
+                    <div class="rounded-4 p-5" style="background-color: rgba(22, 0, 115, 0.1);">
                         <h3 class="fw-bold mb-4">Current Openings</h3>
                         <div class="row g-3">
                             <div class="col-12">
                                 <div class="d-flex align-items-center p-3 bg-white rounded-3">
-                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: #160073;">
                                         <i class="fas fa-code text-white"></i>
                                     </div>
                                     <div class="flex-grow-1">
@@ -274,7 +310,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="d-flex align-items-center p-3 bg-white rounded-3">
-                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: #160073;">
                                         <i class="fas fa-paint-brush text-white"></i>
                                     </div>
                                     <div class="flex-grow-1">
@@ -286,7 +322,7 @@
                             </div>
                             <div class="col-12">
                                 <div class="d-flex align-items-center p-3 bg-white rounded-3">
-                                    <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: #160073;">
                                         <i class="fas fa-mobile-alt text-white"></i>
                                     </div>
                                     <div class="flex-grow-1">
@@ -298,7 +334,7 @@
                             </div>
                         </div>
                         <div class="text-center mt-4">
-                            <a href="{% url 'contact:contact' %}" class="btn btn-primary">
+                            <a href="{% url 'contact:contact' %}" class="btn" style="background-color: #160073; border-color: #160073; color: white; font-weight: 400;">
                                 <i class="fas fa-paper-plane me-2"></i>Apply Now
                             </a>
                         </div>
@@ -319,10 +355,10 @@
                 <h2 class="display-3 fw-light text-white mb-4" style="font-family: 'Poppins', sans-serif; font-weight: 300; text-shadow: 0 6px 25px rgba(0,0,0,0.7), 0 2px 10px rgba(0,0,0,0.5); letter-spacing: -0.02em;">Ready to Work With Us?</h2>
                 <p class="lead text-white mb-5 fs-4" style="font-family: 'Work Sans', sans-serif; font-weight: 500; text-shadow: 0 4px 15px rgba(0,0,0,0.6), 0 1px 5px rgba(0,0,0,0.4); line-height: 1.6;">Let's discuss your project and see how our team can help bring your vision to life.</p>
                 <div class="d-flex flex-wrap gap-4">
-                    <a href="{% url 'contact:contact' %}" class="btn btn-warning px-5 py-3" style="font-size: 1rem; border-radius: 30px; box-shadow: 0 8px 25px rgba(246, 93, 0, 0.4), 0 4px 10px rgba(0,0,0,0.2); font-weight: 300; font-family: 'Work Sans', sans-serif; transition: all 0.3s ease; border: none; background: linear-gradient(135deg, #f65d00, #ff7c00); color: white;">
+                    <a href="{% url 'contact:contact' %}" class="btn btn-warning px-5 py-3" style="font-size: 1rem; border-radius: 30px; box-shadow: 0 8px 25px rgba(246, 93, 0, 0.4), 0 4px 10px rgba(0,0,0,0.2); font-weight: 400; font-family: 'Work Sans', sans-serif; transition: all 0.3s ease; border: none; background: linear-gradient(135deg, #f65d00, #ff7c00); color: white;">
                         <i class="fas fa-paper-plane me-2"></i>Start Your Project
                     </a>
-                    <a href="{% url 'projects:project_list' %}" class="btn btn-outline-light px-5 py-3" style="font-size: 1rem; border-radius: 30px; border-width: 2px; backdrop-filter: blur(15px); font-weight: 300; font-family: 'Work Sans', sans-serif; transition: all 0.3s ease; background: rgba(255,255,255,0.1);" onmouseover="this.style.background='white'; this.style.color='#000'; this.style.borderColor='white'; this.style.boxShadow='0 8px 25px rgba(255,255,255,0.3)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.color='white'; this.style.borderColor='white'; this.style.boxShadow='none';">
+                    <a href="{% url 'projects:project_list' %}" class="btn btn-outline-light px-5 py-3" style="font-size: 1rem; border-radius: 30px; border-width: 2px; backdrop-filter: blur(15px); font-weight: 400; font-family: 'Work Sans', sans-serif; transition: all 0.3s ease; background: rgba(255,255,255,0.1);" onmouseover="this.style.background='white'; this.style.color='#000'; this.style.borderColor='white'; this.style.boxShadow='0 8px 25px rgba(255,255,255,0.3)';" onmouseout="this.style.background='rgba(255,255,255,0.1)'; this.style.color='white'; this.style.borderColor='white'; this.style.boxShadow='none';">
                         <i class="fas fa-eye me-2"></i>View Our Work
                     </a>
                 </div>
