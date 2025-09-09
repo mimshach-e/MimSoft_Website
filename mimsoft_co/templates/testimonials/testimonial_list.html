@@ -77,32 +77,33 @@
         <div class="row g-4">
             {% for testimonial in testimonials %}
             <div class="col-lg-6 col-md-6">
-                <div class="card border-0 shadow-sm h-100">
+                <div class="card h-100" style="background: #ffffff; border: 1px solid rgba(22, 0, 115, 0.15); border-radius: 16px; box-shadow: 0 10px 25px rgba(22, 0, 115, 0.08), 0 6px 16px rgba(246, 93, 0, 0.06); overflow: hidden;">
+                    <div style="height: 4px; width: 100%; background: linear-gradient(135deg, #160073, #f65d00);"></div>
                     <div class="card-body p-4">
                         <div class="mb-3">
                             <div class="d-flex">
                                 {% for i in "12345" %}
-                                <i class="fas fa-star text-warning me-1"></i>
+                                <i class="fas fa-star me-1" style="color: #f65d00;"></i>
                                 {% endfor %}
                             </div>
                         </div>
                         <blockquote class="mb-4">
-                            <p class="fst-italic text-muted fs-5">"{{ testimonial.content }}"</p>
+                            <p class="fst-italic fs-5" style="color: #374151;">"{{ testimonial.content }}"</p>
                         </blockquote>
                         <div class="d-flex align-items-center">
                             {% if testimonial.avatar %}
                             <img src="{{ testimonial.avatar.url }}" alt="{{ testimonial.client_name }}" class="rounded-circle me-3" style="width: 60px; height: 60px; object-fit: cover;">
                             {% else %}
-                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
-                                <i class="fas fa-user fa-2x text-white"></i>
+                            <div class="rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px; background: #160073;">
+                                <i class="fas fa-user fa-2x" style="color: white;"></i>
                             </div>
                             {% endif %}
                             <div class="flex-grow-1">
-                                <h6 class="fw-bold mb-1">{{ testimonial.client_name }}</h6>
-                                <p class="text-muted mb-1">{{ testimonial.role }} at {{ testimonial.company }}</p>
+                                <h6 class="fw-bold mb-1" style="color: #160073;">{{ testimonial.client_name }}</h6>
+                                <p class="mb-1" style="color: #b4b4b4;">{{ testimonial.role }} at {{ testimonial.company }}</p>
                                 {% if testimonial.project %}
-                                <small class="text-primary">
-                                    <a href="{% url 'projects:project_detail' testimonial.project.pk %}" class="text-decoration-none">
+                                <small>
+                                    <a href="{% url 'projects:project_detail' testimonial.project.pk %}" class="text-decoration-none" style="color: #160073 !important; font-weight: 500;">
                                         <i class="fas fa-link me-1"></i>View Project
                                     </a>
                                 </small>
@@ -168,48 +169,84 @@
 </section>
 
 <!-- Why Clients Choose Us -->
-<section class="section-padding bg-light">
+<section class="section-padding" style="position: relative; background: linear-gradient(135deg, rgba(22, 0, 115, 0.04), rgba(246, 93, 0, 0.04)); overflow: hidden;">
     <div class="container">
-        <div class="row text-center mb-5">
-            <div class="col-lg-8 mx-auto">
-                <h6 class="text-primary fw-bold text-uppercase mb-3">Why Choose MimSoft</h6>
-                <h2 class="display-5 fw-bold mb-4">Trusted by Businesses Worldwide</h2>
-                <p class="lead text-muted">We've earned the trust of our clients through consistent delivery of high-quality solutions</p>
-            </div>
-        </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6">
-                <div class="text-center p-4">
-                    <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
-                            <i class="fas fa-rocket fa-2x text-primary"></i>
-                        </div>
-                    </div>
-                    <h5 class="fw-bold mb-3">Fast Delivery</h5>
-                    <p class="text-muted">We deliver projects on time and within budget, ensuring your business doesn't miss opportunities.</p>
+        <div class="row align-items-center g-4">
+            <!-- Left: Image -->
+            <div class="col-lg-6">
+                <div class="position-relative rounded-4 overflow-hidden" style="min-height: 420px; background: url('/media/home/hame_hero_page_1.jpg') center / cover no-repeat; box-shadow: 0 20px 60px rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.25);">
+                    <div style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(22,0,115,0.25), rgba(246,93,0,0.2));"></div>
+                    <!-- Flow shape toward content -->
+                    <div class="d-none d-lg-block" style="position: absolute; top: 50%; right: -40px; transform: translateY(-50%); width: 120px; height: 70%; background: rgba(255,255,255,0.25); border-radius: 40px; filter: blur(8px); box-shadow: 0 10px 30px rgba(0,0,0,0.1);"></div>
+                    <!-- Scaled-down mobile flow shape -->
+                    <div class="d-block d-lg-none" style="position: absolute; bottom: 15px; right: -20px; width: 60px; height: 45%; background: rgba(255,255,255,0.18); border-radius: 30px; filter: blur(6px); box-shadow: 0 6px 18px rgba(0,0,0,0.08);"></div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="text-center p-4">
-                    <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
-                            <i class="fas fa-shield-alt fa-2x text-primary"></i>
+            
+            <!-- Right: Content -->
+            <div class="col-lg-6">
+                <div class="position-relative p-4 p-lg-5 rounded-4" style="background: #ffffff; border: 1px solid rgba(22,0,115,0.12); box-shadow: 0 12px 35px rgba(22, 0, 115, 0.08), 0 6px 18px rgba(246, 93, 0, 0.06);">
+                    <!-- Overlap badge -->
+                    <div class="d-none d-lg-block" style="position: absolute; left: -18px; top: 40px; width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 8px 20px rgba(22,0,115,0.25);"></div>
+                    
+                    <h6 class="fw-bold text-uppercase mb-3" style="color: #160073;">Why Choose MimSoft</h6>
+                    <h2 class="display-6 fw-bold mb-4" style="color: #160073;">Trusted by Businesses Worldwide</h2>
+                    <p class="mb-4" style="color: #6b7280;">We combine strategy, design, and engineering to deliver reliable, scalable solutions that move your business forward.</p>
+                    
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 56px; height: 56px; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 6px 18px rgba(22,0,115,0.25);">
+                                        <i class="fas fa-rocket text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1" style="color: #160073;">Fast Delivery</h6>
+                                    <p class="mb-0" style="color: #6b7280;">On-time execution without compromising quality.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 56px; height: 56px; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 6px 18px rgba(22,0,115,0.25);">
+                                        <i class="fas fa-shield-alt text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1" style="color: #160073;">Quality Assurance</h6>
+                                    <p class="mb-0" style="color: #6b7280;">Rigorous QA ensures dependable performance.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 56px; height: 56px; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 6px 18px rgba(22,0,115,0.25);">
+                                        <i class="fas fa-headset text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1" style="color: #160073;">Ongoing Support</h6>
+                                    <p class="mb-0" style="color: #6b7280;">We stay with you post-launch to iterate and scale.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 me-3">
+                                    <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 56px; height: 56px; background: linear-gradient(135deg, #f65d00, #ff7c00); box-shadow: 0 6px 18px rgba(246,93,0,0.25);">
+                                        <i class="fas fa-thumbs-up text-white"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold mb-1" style="color: #160073;">Client Satisfaction</h6>
+                                    <p class="mb-0" style="color: #6b7280;">Partnership mindset with measurable outcomes.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <h5 class="fw-bold mb-3">Quality Assurance</h5>
-                    <p class="text-muted">Rigorous testing and quality standards ensure your solution works flawlessly from day one.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="text-center p-4">
-                    <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 rounded-circle" style="width: 80px; height: 80px;">
-                            <i class="fas fa-headset fa-2x text-primary"></i>
-                        </div>
-                    </div>
-                    <h5 class="fw-bold mb-3">Ongoing Support</h5>
-                    <p class="text-muted">We provide continuous support and maintenance to ensure your solution evolves with your business.</p>
                 </div>
             </div>
         </div>

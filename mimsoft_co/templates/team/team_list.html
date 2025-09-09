@@ -115,7 +115,7 @@
         </div>
         
         {% if team_members %}
-        <div class="row g-3">
+        <div class="row g-3 align-items-stretch">
             {% for member in team_members %}
             <div class="col-lg-4 col-md-6 col-xl-3">
                 <div class="card text-center border-0 shadow-sm h-100" style="background-color: white !important;">
@@ -178,49 +178,57 @@
             </div>
         </div>
         
-        <div class="row g-4">
-            <div class="col-lg-3 col-md-6 d-flex">
-                <div class="text-center p-4 w-100 d-flex flex-column" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; min-height: 280px;">
-                    <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                            <i class="fas fa-lightbulb fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-3 col-md-6">
+                <div class="text-center p-4 h-100" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 6px 20px rgba(22,0,115,0.35); border: 1px solid rgba(255,255,255,0.35);">
+                                <i class="fas fa-lightbulb fa-2x" style="color: white;"></i>
+                            </div>
                         </div>
+                        <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Innovation</h5>
+                        <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We constantly explore new technologies and approaches to deliver cutting-edge solutions.</p>
                     </div>
-                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Innovation</h5>
-                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We constantly explore new technologies and approaches to deliver cutting-edge solutions.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="text-center p-4" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
-                    <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                            <i class="fas fa-handshake fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
+                <div class="text-center p-4 h-100" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 6px 20px rgba(22,0,115,0.35); border: 1px solid rgba(255,255,255,0.35);">
+                                <i class="fas fa-handshake fa-2x" style="color: white;"></i>
+                            </div>
                         </div>
+                        <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Collaboration</h5>
+                        <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We work together as a team, leveraging diverse skills and perspectives to achieve excellence.</p>
                     </div>
-                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Collaboration</h5>
-                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We work together as a team, leveraging diverse skills and perspectives to achieve excellence.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="text-center p-4" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
-                    <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                            <i class="fas fa-star fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
+                <div class="text-center p-4 h-100" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 6px 20px rgba(22,0,115,0.35); border: 1px solid rgba(255,255,255,0.35);">
+                                <i class="fas fa-star fa-2x" style="color: white;"></i>
+                            </div>
                         </div>
+                        <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Excellence</h5>
+                        <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We strive for excellence in everything we do, from code quality to user experience.</p>
                     </div>
-                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Excellence</h5>
-                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We strive for excellence in everything we do, from code quality to user experience.</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="text-center p-4" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease;">
-                    <div class="mb-4">
-                        <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background-color: rgba(255, 255, 255, 0.2); border: 2px solid rgba(255, 255, 255, 0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
-                            <i class="fas fa-heart fa-2x" style="color: white; text-shadow: 0 2px 8px rgba(0,0,0,0.3);"></i>
+                <div class="text-center p-4 h-100" style="background: rgba(255, 255, 255, 0.15); border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.2); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.2); transition: all 0.3s ease; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <div class="mb-4">
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle" style="width: 80px; height: 80px; background: linear-gradient(135deg, #160073, #2d1b69); box-shadow: 0 6px 20px rgba(22,0,115,0.35); border: 1px solid rgba(255,255,255,0.35);">
+                                <i class="fas fa-heart fa-2x" style="color: white;"></i>
+                            </div>
                         </div>
+                        <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Passion</h5>
+                        <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We're passionate about technology and its power to transform businesses and lives.</p>
                     </div>
-                    <h5 class="fw-bold mb-3" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Passion</h5>
-                    <p style="color: rgba(255, 255, 255, 0.9); text-shadow: 0 1px 5px rgba(0,0,0,0.2);">We're passionate about technology and its power to transform businesses and lives.</p>
                 </div>
             </div>
         </div>
